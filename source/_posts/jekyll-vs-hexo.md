@@ -298,7 +298,7 @@ hexo deploy
 
 那么，我怎么像 Jekyll 那样，上传 Markdown 自动编译成 HTML 呢？
 
-[Travis-CI](https://travis-ci.org/) - Test and Deploy with Confidence
+[Travis CI](https://travis-ci.org/) - Test and Deploy with Confidence
 
 这是一个专门面向 GitHub 的持续集成的工具，可以干很多复杂的东西，部署一个博客简直太简单了。
 
@@ -324,12 +324,15 @@ before_script:
   - git config --global user.name "Ganlv"
   - git config --global user.email "nospam@example.com"
   - sed -i "s/git@github.com:/https:\/\/${__GITHUB_TOKEN__}@github.com\//" _config.yml
+  - git clone -b master https://github.com/ganlvtech/ganlvtech.github.io.git .deploy_git
 
 script:
   - hexo deploy
 ```
 
-最后
+注意，这里需要去 GitHub / Settings / Developer / [Personal access tokens](https://github.com/settings/tokens) 去新建一个拥有 `public_repo` 权限的 `token`。然后在 Travis CI 中这个项目的设置中添加一条 `__GITHUB_TOKEN__` 的环境变量。
+
+最后把原始的代码 push 到 dev 分支就可以了。
 
 ```bash
 git init
@@ -339,3 +342,5 @@ git commit -m "Use Travis-CI"
 git remote add origin git@github.com:ganlvtech/ganlvtech.github.io.git
 git push origin dev
 ```
+
+Travis 会根据设置自动为我们构建项目，并且推送到 master 分支。
