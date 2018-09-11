@@ -3,6 +3,11 @@ layout: post
 date: 2018-09-06 02:10:43 +0800
 title: 从零开始写一个PHP网站
 subtitle: Build A PHP Site From Scratch
+tags:
+  - php
+  - installation
+  - tutorial
+  - laravel
 ---
 
 《年薪百万程序员教你两个小时写出淘宝网站》，你的首页推荐似乎已经不堪入目了。
