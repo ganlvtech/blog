@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2018-09-06 02:10:43 +0800
-title: 从零开始写一个PHP网站
+title: 从零开始写一个 PHP 网站
 subtitle: Build A PHP Site From Scratch
 tags:
   - php

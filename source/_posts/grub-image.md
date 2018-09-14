@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: grub-image
+title: Grub2 添加背景图片
 date: 2018-09-14 01:20:05
 tags:
     - ubuntu
