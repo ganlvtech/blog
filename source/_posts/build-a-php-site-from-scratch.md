@@ -4,9 +4,13 @@ date: 2018-09-06 02:10:43 +0800
 title: 从零开始写一个 PHP 网站
 subtitle: Build A PHP Site From Scratch
 tags:
-  - php
   - installation
   - tutorial
+  - chrome
+  - php
+  - PATH
+  - mariadb
+  - composer
   - laravel
 ---
 
@@ -68,8 +72,77 @@ php -v
 
 Images will comming soon.
 
+## 安装 MariaDB 数据库
+
+存数据总不能像大学计算机 C 语言课程上，都是操作文本文件吧，我们要用一个更牛逼的东西——数据库。
+
+我用的是 [MariaDB][mariadb]，到 [下载页面][mariadb-download] 去下载一个最新版就行了。
+
+## 安装 Composer
+
+代码不能全是自己写，有现成的就用现成的，[Composer][composer] 可以自动帮我们下载 [Packagist][packagist] 上面现成的包。
+
+到 [Composer 下载页面][composer-download] 中下载 `Composer-Setup.exe` 正常安装即可。
+
+## 新建 Laravel 项目
+
+php 网站可以全部由自己从头写起，不过开发效率太低，我使用 [Laravel][laravel] 这个框架。
+
+使用框架，我们不用考虑如何操作数据库等等细节内容，我们只需要完成每个页面的逻辑过程就行了。
+
+### 安装 Laravel Installer
+
+```bash
+composer global require "laravel/installer"
+```
+
+### 新建 Laravel 应用
+
+```bash
+laravel new myapp
+```
+
+然后进入这个文件夹。
+
+## 写代码
+
+要学习这个框架，可以参考 [Laravel 5.4 from scratch][laravel-tutorial-video] 视频教程。如果有任何问题，应该首先查找 [Laravel 说明文档][laravel-docs]。
+
+### 配置文件
+
+`.env` 文件
+
+`config` 文件夹
+
+### 启动开发服务器
+
+我们需要一边写代码，一边看效果。Laravel 给我们提供了一个开发服务器，直接运行下面这条命令即可。
+
+```bash
+php artisan serve
+```
+
+### 后端代码
+
+10 倍速快进（此处省略 3000 行代码）
+
+### 前端代码
+
+10 倍速快进（此处省略 3000 行代码）
+
+## GitHub
+
+写完的项目我们可以放到 GitHub 开放给其他人。
+
 [chrome]: https://www.google.cn/chrome/
 [chrome-64bit]: https://www.chrome64bit.com/
 [php]: http://php.net/
 [php-windows]: https://windows.php.net/download/
-
+[mariadb]: https://mariadb.org/
+[mariadb-download]: https://downloads.mariadb.org/
+[composer]: https://getcomposer.org/
+[packagist]: https://packagist.org/
+[composer-download]: https://getcomposer.org/download/
+[laravel]: https://laravel.com/
+[laravel-tutorial-video]: https://laracasts.com/series/laravel-from-scratch-2017
+[laravel-docs]: https://laravel.com/docs/
