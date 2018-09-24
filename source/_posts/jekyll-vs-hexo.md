@@ -9,6 +9,10 @@ tags:
   - gem
   - node.js
   - npm
+  - travis
+  - ci
+  - github
+  - pages
 ---
 
 最近我想用 [GitHub Pages](https://pages.github.com/) 搭建一个静态博客。最先想到的肯定是 [Jekyll](https://jekyllrb.com/) 了，因为这个东西是 GitHub 官方支持的。
