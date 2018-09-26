@@ -29,7 +29,7 @@ script:
 
 而且也不知道是不是因为使用了 `nospam` 的邮箱，GitHub 无法识别我这个提交的来源用户，就将提交者的视为陌生人了。
 
-![](/images/hexo-deploy-vs-travis-pages-provider/different-committers.jpg)
+![hexo deploy travis pages provider different committers](/images/hexo-deploy-vs-travis-pages-provider/different-committers.jpg)
 
 于是，我就想，hexo 只负责生成静态页面，部署到 GitHub Pages 使用 Travis CI 的 Pages Provider，这样提交者会显示成 `travisbot`，一目了然，知道这个是自动提交的。而且配置文件似乎更简洁。
 
@@ -52,3 +52,22 @@ deploy:
 ```
 
 在执行生成脚本之前只是全局安装 `hexo-cli`，然后执行 `hexo generate` 生成静态页面，然后利用 Travis CI 自动部署就完事儿啦，轻而易举，多么简洁。
+
+后来我又发现好像并不用 `npm install -g hexo-cli`，原来这样写有点多余。
+
+```yaml
+before_script:
+  - npm install -g hexo-cli
+
+script:
+  - hexo generate
+```
+
+因为 `npm install` 的时候，安装的 `hexo` 包自带了 `hexo-cli`。
+
+把 `before_script` 删掉，`script` 改成下面这样。
+
+```yaml
+script:
+  - ./node_modules/hexo/bin/hexo generate
+```

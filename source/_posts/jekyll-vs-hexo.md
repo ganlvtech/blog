@@ -15,11 +15,11 @@ tags:
   - pages
 ---
 
-最近我想用 [GitHub Pages](https://pages.github.com/) 搭建一个静态博客。最先想到的肯定是 [Jekyll](https://jekyllrb.com/) 了，因为这个东西是 GitHub 官方支持的。
+最近我想用 [GitHub Pages][github-pages] 搭建一个静态博客。最先想到的肯定是 [Jekyll][jekyll] 了，因为这个东西是 GitHub 官方支持的。
 
 通常来说，被 GitHub 所看中的项目，应该是非常不错的，不过用了之后才会发现一些问题。
 
-这篇文章既包括正常的安装步骤，也包括一些吐槽，从中能发现对两者的一些看法。最后，我选择了使用 [Hexo](https://hexo.io/)。
+这篇文章既包括正常的安装步骤，也包括一些吐槽，从中能发现对两者的一些看法。最后，我选择了使用 [Hexo][hexo]。
 
 ## Jekyll
 
@@ -27,7 +27,7 @@ tags:
 
 ### 快速开始 Quickstart
 
-1. 安装一个完全的 [Ruby 开发环境](https://jekyllrb.com/docs/installation/)
+1. 安装一个完全的 [Ruby 开发环境][ruby-installation]
 
 2. 安装 `Jekyll` 和 `bundler` 的 gem 包
 
@@ -53,7 +53,7 @@ tags:
     bundle exec jekyll serve
     ```
 
-6. 现在可以访问 `http://localhost:4000` 了
+6. 现在可以访问 <http://localhost:4000> 了
 
 ### 实际上我的安装过程
 
@@ -81,13 +81,13 @@ Ruby 入门（Ruby 101）这个我就不看了，毕竟我以不打算学 Ruby�
 
 自己开的坑，至少研究明白再弃坑，我弄成功之后肯定要换个解决方案。
 
-> 运行 Jekyll 最简单的方法就是使用 [RubyInstaller](https://rubyinstaller.org/) for Windows
+> 运行 Jekyll 最简单的方法就是使用 [RubyInstaller][ruby-installer] for Windows
 
 **用 Installer 来安装其实挺方便的** ，就不用自己配置 PATH 之类的，安装过程基本不会出现什么问题。
 
 不过看到 `Ruby+Devkit` 版本，我就有点不高兴了。 **我要运行一个 Ruby 的软件，为什么还要安装 Devkit** 。难道不是像 Java 一样分为 JRE 和 JDK，如果只是运行 jar 只用 JRE 就够了？
 
-那就先下载吧 [rubyinstaller-devkit-2.4.4-2-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/rubyinstaller-2.4.4-2/rubyinstaller-devkit-2.4.4-2-x64.exe)。竟然要 115 MB，这什么鬼东西啊！Node.js 才 20MB，php 30MB，Chrome 也就 50MB， **我为什么要为了写个博客装一个 115 MB 的东西** 。
+那就先下载吧 [rubyinstaller-devkit-2.4.4-2-x64.exe][rubyinstaller-devkit-download]。竟然要 115 MB，这什么鬼东西啊！Node.js 才 20MB，php 30MB，Chrome 也就 50MB， **我为什么要为了写个博客装一个 115 MB 的东西** 。
 
 然后就安装吧，一路默认选项，反正我已经准备好卸载了。
 
@@ -110,7 +110,7 @@ cd myblog
 jekyll serve
 ```
 
-访问 `http://localhost:4000`，终于成功访问了。
+访问 <http://localhost:4000>，终于成功访问了。
 
 ### GitHub Pages
 
@@ -135,17 +135,17 @@ git init
 git gui
 ```
 
-然后就可以到仓库设置 <https://github.com/ganlvtech/ganlvtech.github.io/settings> 中启用 GitHub Pages，
+然后就可以到 [仓库设置][repo-settings] 中启用 GitHub Pages，
 
 然后问题就来了，静态页面的 CSS 文件加载不出来，不知道为什么。
 
 我怀疑可能是 GitHub 不支持 minima 这个主题，我尝试修改设置里的“主题”选项，改了之后也没用。
 
-经过一番 Bing 搜索，我找到了 [About GitHub Pages and Jekyll](https://help.github.com/articles/about-github-pages-and-jekyll/#jekyll-site-examples)
+经过一番 Bing 搜索，我找到了 [About GitHub Pages and Jekyll][about-github-pages-and-jekyll]
 
-> We recommend using Jekyll if you want the built-in support it offers, including the [GitHub Pages gem](https://github.com/github/pages-gem) to manage dependencies, specific build failure messages, and more specific help with troubleshooting.
+> We recommend using Jekyll if you want the built-in support it offers, including the [GitHub Pages gem][github-pages-gem] to manage dependencies, specific build failure messages, and more specific help with troubleshooting.
 
-我就打开 [GitHub Pages gem](https://github.com/github/pages-gem) 这个链接看了一下，也没太看明白
+我就打开 [GitHub Pages gem][github-pages-gem] 这个链接看了一下，也没太看明白
 
 我在 `Gemfile` 最后添加了一行
 
@@ -157,7 +157,7 @@ gem 'github-pages', group: :jekyll_plugins
 
 ### 主题
 
-GitHub 官方支持的主题实在不符合我的审美要求，我在 GitHub 全仓库搜索 `jekyll` 按 Star 排序挨个看，终于找到一个我感觉很舒服的主题，[H2O](https://github.com/kaeyleo/jekyll-theme-H2O)。
+GitHub 官方支持的主题实在不符合我的审美要求，我在 GitHub 全仓库搜索 `jekyll` 按 Star 排序挨个看，终于找到一个我感觉很舒服的主题，[H2O][jekyll-theme-H2O]。
 
 浏览过程中我发现，Jekyll 主题的下载方法竟然不是通过包管理器下载，而是手动克隆仓库，相当于把模板和 CSS 文件下载下来。
 
@@ -179,7 +179,7 @@ Bing 一下 `jekyll new post`，结果真的没有，这个根本就不人性化
 
 ### Gem 包版本冲突
 
-本来以为问题都解决了，我也没怎么多想，我就用 [vscode](https://code.visualstudio.com/) 写了一篇博客，vscode 自带的感觉还不错。想在 Push 之前看看效果，运行
+本来以为问题都解决了，我也没怎么多想，我就用 [vscode][vscode] 写了一篇博客，vscode 自带的感觉还不错。想在 Push 之前看看效果，运行
 
 ```bash
 jekyll serve --watch
@@ -204,7 +204,7 @@ Bundler could not find compatible versions for gem "jekyll": (Bundler::VersionCo
 
 ## 同类产品
 
-搜索一下 `Jekyll Alternatives`，WordPress 肯定是最多的啦，当然我们要的是静态博客，还有 [Hugo](https://github.com/gohugoio/hugo) 和 [Hexo](https://github.com/hexojs/hexo)，对比一下：
+搜索一下 `Jekyll Alternatives`，WordPress 肯定是最多的啦，当然我们要的是静态博客，还有 [Hugo][hugo] 和 [Hexo][hexo]，对比一下：
 
 * GitHub 上 Star 数差不多
 * Hexo 有中文文档，很多贡献者都是中国人
@@ -220,8 +220,8 @@ Bundler could not find compatible versions for gem "jekyll": (Bundler::VersionCo
 
 安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：
 
-* [Node.js]https://nodejs.org/)
-* [Git](https://git-scm.com/)
+* [Node.js][node-js]
+* [Git][git]
 
 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。
 
@@ -233,9 +233,9 @@ $ npm install -g hexo-cli
 
 完全没有任何问题。
 
-访问 <https://nodejs.org/zh-cn/>，直接点击下载最新版的按钮就行。然后安装时一路确定就行了。
+访问 [Node.js 官方网站][node-js]，直接点击下载最新版的按钮就行。然后安装时一路确定就行了。
 
-（既然都用 GitHub Pages 了，不可能没装 Git 吧。访问 <https://git-scm.com/>，下载最新版，安装时同样一路确定。）
+（既然都用 GitHub Pages 了，不可能没装 Git 吧。访问 [Git 官方网站][git]，下载最新版，安装时同样一路确定。）
 
 执行
 
@@ -302,7 +302,7 @@ hexo deploy
 
 那么，我怎么像 Jekyll 那样，上传 Markdown 自动编译成 HTML 呢？
 
-[Travis CI](https://travis-ci.org/) - Test and Deploy with Confidence
+[Travis CI][travis-ci] - Test and Deploy with Confidence
 
 这是一个专门面向 GitHub 的持续集成的工具，可以干很多复杂的东西，部署一个博客简直太简单了。
 
@@ -334,7 +334,7 @@ script:
   - hexo deploy
 ```
 
-注意，这里需要去 GitHub / Settings / Developer / [Personal access tokens](https://github.com/settings/tokens) 去新建一个拥有 `public_repo` 权限的 `token`。然后在 Travis CI 中这个项目的设置中添加一条 `__GITHUB_TOKEN__` 的环境变量。
+注意，这里需要去 GitHub / Settings / Developer / [Personal access tokens][personal-access-token] 去新建一个拥有 `public_repo` 权限的 `token`。然后在 Travis CI 中这个项目的设置中添加一条 `__GITHUB_TOKEN__` 的环境变量。
 
 最后把原始的代码 push 到 dev 分支就可以了。
 
@@ -348,3 +348,25 @@ git push origin dev
 ```
 
 Travis 会根据设置自动为我们构建项目，并且推送到 master 分支。
+
+### 改进的自动部署
+
+参考另一篇文章 [hexo deploy v.s. Travis Pages provider][hexo-deploy-vs-travis-pages-provider]
+
+[github-pages]: https://pages.github.com/
+[jekyll]: https://jekyllrb.com/
+[hexo]: https://hexo.io/
+[ruby-installation]: https://jekyllrb.com/docs/installation/
+[ruby-installer]: https://rubyinstaller.org/
+[rubyinstaller-devkit-download]: https://github.com/oneclick/rubyinstaller2/releases/download/rubyinstaller-2.4.4-2/rubyinstaller-devkit-2.4.4-2-x64.exe
+[repo-settings]: https://github.com/ganlvtech/ganlvtech.github.io/settings
+[about-github-pages-and-jekyll]: https://help.github.com/articles/about-github-pages-and-jekyll/#jekyll-site-examples
+[github-pages-gem]: https://github.com/github/pages-gem
+[jekyll-theme-H2O]: https://github.com/kaeyleo/jekyll-theme-H2O
+[vscode]: https://code.visualstudio.com/
+[hugo]: https://github.com/gohugoio/hugo
+[node-js]: https://nodejs.org/zh-cn/
+[git]: https://git-scm.com/
+[travis-ci]: https://travis-ci.org/
+[personal-access-token]: https://github.com/settings/tokens
+[hexo-deploy-vs-travis-pages-provider]: /2018/09/24/hexo-deploy-vs-travis-pages-provider/
