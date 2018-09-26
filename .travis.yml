@@ -6,11 +6,8 @@ branches:
   only:
     - dev
 
-before_script:
-  - npm install -g hexo-cli
-
 script:
-  - hexo generate
+  - ./node_modules/hexo/bin/hexo generate
 
 deploy:
   provider: pages

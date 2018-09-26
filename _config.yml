@@ -92,6 +92,15 @@ feed:
   content_limit_delim: ' '
   order_by: -date
 
+html_minifier:
+  removeComments: true
+  collapseWhitespace: true
+  preserveLineBreaks: true
+  collapseBooleanAttributes: true
+  removeEmptyAttributes: true
+  removeScriptTypeAttributes: true
+  removeStyleLinkTypeAttributes: true
+
 ## Themes: https://hexo.io/themes/
 theme: landscape
 
