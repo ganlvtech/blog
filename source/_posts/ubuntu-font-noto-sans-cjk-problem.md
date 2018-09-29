@@ -16,7 +16,7 @@ tags:
 sudo vi /etc/fonts/conf.d/64-language-selector-prefer.conf
 ```
 
-Use `yy` (yield a whole line) and `p` (paste) to move `Noto Sans CJK SC` to the first. And then `:wq` (write and quite). Restart running program may apply the changes.
+Use `dd` (delete a whole line) and `p` (paste) to move `Noto Sans CJK SC` to the first. And then `:wq` (write and quite). Restart running program may apply the changes.
 
 ## About The Default Order
 
