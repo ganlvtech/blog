@@ -8,6 +8,7 @@ branches:
 
 script:
   - ./node_modules/hexo/bin/hexo generate
+  - cp README.md public/README.md
 
 deploy:
   provider: pages
