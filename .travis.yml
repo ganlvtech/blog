@@ -2,10 +2,6 @@ language: node_js
 node_js:
   - "node"
 
-branches:
-  only:
-    - dev
-
 script:
   - ./node_modules/hexo/bin/hexo generate
   - cp README.md public/README.md
@@ -16,6 +12,7 @@ deploy:
   keep-history: true
   github-token: $GITHUB_TOKEN
   local-dir: public
+  repo: git@github.com:ganlvtech/ganlvtech.github.io.git
   target-branch: master
   on:
-    branch: dev
+    branch: master
