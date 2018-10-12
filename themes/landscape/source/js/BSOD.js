@@ -551,7 +551,8 @@ BSOD.prototype.clear = function () {
     document.body.style.overflow = '';
 };
 BSOD.auto = function () {
-    function onclick() {
+    function onclick(e) {
+        e.preventDefault();
         var bsod = new BSOD();
         bsod.randomStopCode();
         BSOD.fullScreen();
