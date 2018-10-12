@@ -12,7 +12,7 @@ deploy:
   keep-history: true
   github-token: $GITHUB_TOKEN
   local-dir: public
-  repo: git@github.com:ganlvtech/ganlvtech.github.io.git
+  repo: ganlvtech/ganlvtech.github.io
   target-branch: master
   on:
     branch: master
