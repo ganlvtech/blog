@@ -109,6 +109,17 @@ js_minifier:
 image_minifier:
   enable: false
 
+## https://github.com/bubkoo/hexo-toc
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+  anchor:
+    position: after
+    symbol: '#'
+    style: header-anchor
+
 ## Themes: https://hexo.io/themes/
 theme: landscape
 

@@ -9,6 +9,8 @@ tags:
     - ubuntu
 ---
 
+<!-- toc -->
+
 我使用的系统是 Ubuntu Server 18.04 LTS。
 
 > 其实我用的是 [Laravel Homestead][homestead] 的 [Vagrant][vagrant] [Box][homestead-box]，一个非常方便的虚拟机。
