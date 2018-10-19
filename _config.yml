@@ -121,13 +121,19 @@ toc:
     symbol: '#'
     style: header-anchor
 
+## https://github.com/knksmith57/hexo-renderer-sass
+node_sass:
+  outputStyle: expended
+  precision: 5
+  sourceComments: false
+
 ## Themes: https://hexo.io/themes/
 theme: landscape
 theme_config:
   github_username: ganlvtech
   bilibili_uid: 9365715
 
-disqus_shortname: ganlvtech
+# disqus_shortname: ganlvtech
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
