@@ -45,6 +45,10 @@ tags:
 >
 > Danger
 
+> [Comment]
+>
+> Comment
+
 > [Notice]
 >
 > Notice
@@ -57,24 +61,28 @@ tags:
 >
 > Error
 
-> [Primary]
+> [Default]
 >
-> Primary
+> Default
 > 
-> > [Info]
+> > [Primary]
 > >
-> > Info
+> > Primary
 > > 
-> > > [Success]
+> > > [Info]
 > > >
-> > > Success
+> > > Info
 > > > 
-> > > > [Warning]
+> > > > [Success]
 > > > >
-> > > > Warning
+> > > > Success
 > > > > 
-> > > > > [Danger]
+> > > > > [Warning]
 > > > > >
-> > > > > Danger
+> > > > > Warning
+> > > > > 
+> > > > > > [Danger]
+> > > > > >
+> > > > > > Danger
 
 [bulma]: https://bulma.io/

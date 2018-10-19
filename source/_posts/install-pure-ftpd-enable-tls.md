@@ -13,6 +13,8 @@ tags:
 
 我使用的系统是 Ubuntu Server 18.04 LTS。
 
+> [Comment]
+>
 > 其实我用的是 [Laravel Homestead][homestead] 的 [Vagrant][vagrant] [Box][homestead-box]，一个非常方便的虚拟机。
 
 本文参考了 [Pure-FTPd][pure-ftpd] 的 [Ubuntu Community Wiki][pure-ftpd-ubuntu-community-help]
@@ -44,6 +46,8 @@ tcp        0      0 0.0.0.0:21              0.0.0.0:*               LISTEN      
 tcp6       0      0 :::21                   :::*                    LISTEN      2663/pure-ftpd (SER
 ```
 
+> [Info]
+>
 > Local Address 是 `0.0.0.0` 表示对外监听，如果是 `127.0.0.1` 的话就是只监听本机，外部的请求无法访问到这个端口。
 
 ### 尝试连接一下
@@ -52,6 +56,8 @@ tcp6       0      0 :::21                   :::*                    LISTEN      
 
 暂时用匿名用户 `anonymous` 登录，可以看到服务器回应 `Login authentication failed`，证明服务器是安装成功了，但是还没创建 FTP 用户呢。
 
+> [Info]
+>
 > Laravel Homestead 虚拟机默认的 IP 是 `192.168.10.10`。
 
 ### 启用虚拟账户
@@ -82,6 +88,8 @@ sudo pure-pw useradd ganlv -u vagrant -d /home/vagrant/
 
 Linux 下每个文件和文件夹都有用户和用户组，所以需要特定用户才能操作。虽然有虚拟账户系统，但是还是需要用一个系统账户来进行操作的，总不能用 root 账户来操作吧。
 
+> [Notice]
+>
 > 其实在登录之后，`pure-ftpd` 会用权限较低用户（就是设置的 `vagrant`）创建一个新进程来执行操作，保证以较低的权限来执行操作。
 
 然后输入两遍密码就创建完成了。

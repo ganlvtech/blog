@@ -22,6 +22,8 @@ Use `dd` (delete a whole line) and `p` (paste) to move `Noto Sans CJK SC` to the
 
 `JP, KR, SC, TC`. They are sorted by alphabet. So a newly installed copy of Ubuntu would prefer `Noto Sans CJK JP` as default fallback font.
 
+> [Notice]
+>
 > `CJK`, `Chinese, Japanese, Korean`, is also sorted by alphabet resulting in Chinese `C` first.
 
 [how-to-configure-noto-sans-cjk]: https://www.zhihu.com/question/47141667

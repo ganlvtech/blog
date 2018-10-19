@@ -9,7 +9,8 @@ const MESSAGE_LEVELS = {
   warning: 'warning',
   danger: 'danger',
   // alias
-  notice: 'default',
+  comment: 'default',
+  notice: 'primary',
   tips: 'info',
   error: 'danger',
 }
