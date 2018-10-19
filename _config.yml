@@ -123,6 +123,9 @@ toc:
 
 ## Themes: https://hexo.io/themes/
 theme: landscape
+theme_config:
+  github_username: ganlvtech
+
 disqus_shortname: ganlvtech
 
 # Deployment
