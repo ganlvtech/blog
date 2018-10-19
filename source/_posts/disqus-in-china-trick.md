@@ -7,6 +7,7 @@ tags:
   - comment
   - hexo
   - js
+  - hosts
 comments: true
 ---
 
@@ -32,7 +33,7 @@ Disqus 默认使用一个 `script` 标签来获取数据
 
 其实如果阅读代码后可以发现，这个 `embed.js` 并不会变化。他只是用来搜索所有 `script` 标签的 `src` 属性，匹配出类似 `ganlvtech` 的 shortname。然后利用这个 shortname 来获取评论数据。
 
-又恰巧，disqus有一个没有被墙的 CDN `a.disquscdn.com`。
+又恰巧，disqus有一个没有被墙的 CDN `c.disquscdn.com`。
 
 那么我们把上面的代码改成
 
@@ -40,16 +41,20 @@ Disqus 默认使用一个 `script` 标签来获取数据
 <script>
     var disqus_shortname = "ganlvtech";
 </script>
-<script src="//a.disquscdn.com/embed.js">
+<script src="//c.disquscdn.com/embed.js">
+```
+
+此外还必须添加几条 hosts
+
+```plain
+151.101.0.134 disqus.com
+104.16.80.166 c.disquscdn.com
+151.101.26.49 a.disquscdn.com
 ```
 
 然后就可以不翻墙使用了。
 
 效果并不是不太好，仅仅只是能用。
-
-## TODO
-
-`count.js` 应该也需要改一下，否则仍然无法使用。因为它依然需要从 `ganlvtech.disqus.com` 加载脚本。
 
 ## Hexo
 
@@ -76,7 +81,11 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed
 改成
 
 ```js
-dsq.src = '//a.disquscdn.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+dsq.src = '//c.disquscdn.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
 ```
 
 [disqus]: https://disqus.com/
+
+## TODO
+
+`count.js` 应该也需要改一下，否则仍然无法使用。因为它依然需要从 `ganlvtech.disqus.com` 加载脚本。
