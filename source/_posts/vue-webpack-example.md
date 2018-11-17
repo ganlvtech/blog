@@ -5,7 +5,8 @@ tags:
   - vue
   - webpack
   - npm
-  - javascript
+  - js
+  - node.js
 ---
 
 <!-- toc -->
