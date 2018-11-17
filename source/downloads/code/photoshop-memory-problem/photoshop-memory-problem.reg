@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Adobe\Photoshop\110.0]
+"OverridePhysicalMemoryMB"=dword:00001000

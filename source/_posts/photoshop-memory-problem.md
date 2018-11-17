@@ -30,14 +30,7 @@ tags:
 
 ## 下载注册表文件
 
-[photoshop-memory-problem.reg]
-
-```reg
-Windows Registry Editor Version 5.00
-
-[HKEY_CURRENT_USER\Software\Adobe\Photoshop\110.0]
-"OverridePhysicalMemoryMB"=dword:00001000
-```
+{% include_code photoshop-memory-problem.reg photoshop-memory-problem/photoshop-memory-problem.reg %}
 
 > [Info]
 >
@@ -54,5 +47,3 @@ Windows Registry Editor Version 5.00
 它认为总内存大小只有 8MB。但是 Photoshop 又要求最小值是 96MB。于是出现了“要求 96 和 8 之间的整数”。
 
 然后估计是抛出异常了，但是被 catch 住了，然后就什么也没发生，但是也什么都做不了。
-
-[photoshop-memory-problem.reg]: /assets/photoshop-memory-problem/photoshop-memory-problem.reg
