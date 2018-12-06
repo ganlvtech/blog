@@ -23,6 +23,7 @@ tags:
       * Terminal: `Alt + Grave accent`
     * Other
       * New...: `Ctrl + N`
+      * Show in Explorer: `Alt + Shift + R`
 * Editor
   * General
     * Mouse
