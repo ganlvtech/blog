@@ -14,6 +14,8 @@ tags:
 * Keymap
   * Scheme: `Visual Studio copy`
     * Main menu
+      * Active Editor
+        * Use Soft Wraps: `Alt + Z`
       * Window
         * Editor Tabs
           * Split Vertically: `Ctrl + \`
