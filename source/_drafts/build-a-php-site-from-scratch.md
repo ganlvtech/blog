@@ -6,6 +6,7 @@ subtitle: Build A PHP Site From Scratch
 tags:
   - installation
   - tutorial
+  - windows
   - chrome
   - php
   - PATH
@@ -42,9 +43,13 @@ PHP 编程并不需要多么强大的电脑，3000 元的笔记本电脑都可�
 >
 > 我推荐您选用自带 Windows 10 操作系统的电脑，这可以为您避免许多麻烦。
 
+这篇文章是在一个全新安装的 Windows 10 64 位简体中文操作系统下进行测试的，已经考虑到你可能遇到的很多情况。
+
 ## 安装 Windows 10
 
-这篇文章是在一个全新安装的 Windows 10 系统下进行测试的。
+如果你用的是较早的 Windows 版本，我推荐更新到 Windows 10，Windows 最近的很多更新都是对开发者十分友好的，会减少很多麻烦。
+
+这里省略了 Windows 安装过程。不过这里有一个把 Windows 10 安装到虚拟机的视频。
 
 {% bilibili 33762455 %}
 
@@ -90,21 +95,23 @@ PHP 是免安装的，下载之后解压到某个文件夹即可使用。我是�
 
 之后可能经常要跟命令行打交道，设置 `PATH` 可以让你从任何位置打开命令行即均轻松地访问 `php.exe`。
 
-按 `Win + S` 打开 Cortana，输入 `环境变量`，即可找到 `编辑系统环境变量` 的选项。
-
-> [Tips]
->
-> `Win + S` 中的 `S` 表示 `Search`
+按 <kbd>Win</kbd> + <kbd>S</kbd> 打开 Cortana，输入 `环境变量`，即可找到 `编辑系统环境变量` 的选项。
 
 选择 `环境变量`，在下方的 `系统变量`中找到`PATH`，双击这一行，弹出修改框，然后点击添加，在最后一行输入 `C:\Program1\php` 即可。
 
-这时使用 `Win + R` 打开运行窗口，输入 `cmd` 回车。在弹出的命令行窗口中输入
+这时使用 <kbd>Win</kbd> + <kbd>R</kbd> 打开运行窗口，输入 `cmd` 回车。在弹出的命令行窗口中输入
 
 ```bash
 php --version
 ```
 
 成功显示版本号了，证明你可以从任何位置访问 `php` 了。
+
+> [Tips]
+>
+> <kbd>Win</kbd> + <kbd>S</kbd> 中的 `S` 表示 `Search`。
+>
+> <kbd>Win</kbd> + <kbd>R</kbd> 中的 `R` 表示 `Run`。
 
 ### VCRUNTIME
 
@@ -122,9 +129,97 @@ php --version
 
 ## 安装 Notepad++
 
+从 [Notepad++ 官方网站][notepad-plus-plus] 下载最新版的 Notepad++。通常使用最新版的 `Notepad++ Installer 64-bit x64` 即可。
+
+正常安装即可。如果要不想使用英文界面，勾选上 `Localization` 即可安装中文界面。
+
+> [Comment]
+>
+> 使用 Notepad++ 可以避免使用 Windows 自带的记事本的很多问题，最常见的问题就是某些情况下记事本会添加 BOM 头，而通常程序代码并不希望遇到 BOM 头。
+
 ## Hello World
 
+> [Info]
+>
+> 首先需要“显示文件扩展名”
+>
+> 打开 `我的电脑` （即文件资源管理器），点击菜单里的 `查看`，勾选 `文件扩展名`。
+
+> [Comment]
+>
+> `显示文件扩展名` 对开发有很多好处，最显而易见的好处就是，不会弄混相同文件名、不同扩展名的文件。
+>
+> 除了开发以外，还可以避免一些简单的病毒，例如某些病毒会把图标设置成文件夹的图形，如果你显示了扩展名，看到一个文件夹的扩展名是 `.exe`，就会发现异常了。
+
+在桌面右键，新建，文本文档，会出现一个文件 `新建文本文档.txt`，重命名为 `index.php`。
+
+右键使用 Notepad++ 打开
+
+### 原样输出
+
+直接写入
+
+```php
+Hello, world!
+```
+
+保存。
+
+然后右键 Notepad++ 的文件选项卡，选择 `打开所在文件夹(命令行)`。
+
+输入
+
+```bash
+php index.php
+```
+
+回车。
+
+你可以看到文本文档内容原样输出出来了。
+
+你的第一个 php 命令行程序已经完成了。
+
+### echo 语句
+
+为了体现区别，把内容改成
+
+```php
+<?php
+echo 'Hello, world! 2';
+```
+
+> [Tips]
+>
+> 注意这里用的是单引号 `'`，键盘上 <kbd>L</kbd> 右边的第 2 个键 <kbd>'</kbd>。
+
+回到命令行窗口，按 <kbd>↑</kbd> 键，可以看到上一条 `php index.php` 命令直接自动输入好了，然后回车。
+
+可以看到 `echo` 语句的引号内的内容。
+
+你的第一个包含 php 代码的 php 命令行程序已经完成了。
+
 ### PHP Development Server
+
+同样为了体现区别，把内容改成
+
+```php
+<?php
+echo 'Hello, world! 3';
+```
+
+回到命令行窗口，执行
+
+```bash
+php -S 127.0.0.1:8000
+```
+
+> [Tips]
+>
+> 注意：`S` 是大写的，其含义是 `Server`。
+
+打开浏览器，访问 <http://127.0.0.1:8000/>。
+
+现在你使用 php 开发的第一个网页应用也完成了。
 
 ## 基础语法
 
@@ -195,6 +290,7 @@ php artisan serve
 [php]: http://php.net/
 [php-windows]: https://windows.php.net/download/
 [vc-redist-x64]: https://aka.ms/vs/15/release/VC_redist.x64.exe
+[notepad-plus-plus]: https://notepad-plus-plus.org、
 [mariadb]: https://mariadb.org/
 [mariadb-download]: https://downloads.mariadb.org/
 [composer]: https://getcomposer.org/
