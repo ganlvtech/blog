@@ -13,6 +13,8 @@ tags:
 
 * Keymap
   * Scheme: `Visual Studio copy`
+    * Editor Actions
+      * Add or Remove Caret: `Alt + Button1 Click`
     * Main menu
       * Active Editor
         * Use Soft Wraps: `Alt + Z`
