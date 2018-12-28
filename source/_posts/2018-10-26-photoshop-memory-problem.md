@@ -10,7 +10,7 @@ tags:
 
 > 要求 96 和 8 之间的整数。已插入最接近的数值
 
-![无法打开首选项中的性能](/images/photoshop-memory-problem/cannot-open-performance-tab.jpg)
+![无法打开首选项中的性能](/images/2018-10-26-photoshop-memory-problem/cannot-open-performance-tab.jpg)
 
 这个问题困扰了我一段时间。这个方法也是从网上找到的。
 
@@ -24,13 +24,13 @@ tags:
 
 双击修改，把 `基数` 改成 `十进制`。然后把数值修改成你的内存大小（比如 4GB 内存填写 `4096`）。确定。
 
-![注册表编辑器界面](/images/photoshop-memory-problem/regedit.jpg)
+![注册表编辑器界面](/images/2018-10-26-photoshop-memory-problem/regedit.jpg)
 
 重新打开 Photoshop。
 
 ## 下载注册表文件
 
-{% include_code photoshop-memory-problem.reg photoshop-memory-problem/photoshop-memory-problem.reg %}
+{% include_code photoshop-memory-problem.reg 2018-10-26-photoshop-memory-problem/photoshop-memory-problem.reg %}
 
 > [Info]
 >

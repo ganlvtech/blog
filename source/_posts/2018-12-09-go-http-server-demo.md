@@ -13,7 +13,7 @@ Build an http server in go is really easy. By using `net/http`, we can build a h
 
 ## Simple HTTP Server
 
-{% include_code main.go go-http-server-demo/main.go %}
+{% include_code main.go 2018-12-09-go-http-server-demo/main.go %}
 
 Run `go run main.go`
 
@@ -25,7 +25,7 @@ The `net/http` package provided by golang is really powerful, so sometimes you e
 
 ## Server Mux
 
-{% include_code mux.go go-http-server-demo/mux.go %}
+{% include_code mux.go 2018-12-09-go-http-server-demo/mux.go %}
 
 Run `go run mux.go`
 

@@ -46,7 +46,7 @@ tags:
 
 向虚拟机插入 Guest Additions 光盘。
 
-![Insert Guest Additions CD image](/images/install-ubuntu-server-18-04-on-virtual-machine/insert-guest-addition-cd-image.jpg)
+![Insert Guest Additions CD image](/images/2018-10-27-install-ubuntu-server-18-04-on-virtual-machine/insert-guest-addition-cd-image.jpg)
 
 然后挂载光盘
 

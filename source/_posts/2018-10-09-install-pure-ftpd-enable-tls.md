@@ -158,13 +158,13 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/pur
 
 FileZilla 连接一下试一试
 
-![使用 Pure-FTPd 连接到 FTP 服务器](/images/install-pure-ftpd-enable-tls/filezilla-connect.jpg)
+![使用 Pure-FTPd 连接到 FTP 服务器](/images/2018-10-09-install-pure-ftpd-enable-tls/filezilla-connect.jpg)
 
 确定即可，信任这个证书，以后就不会再提示了。
 
 站点管理器中也可以要求显式的 FTP 通过 TLS。
 
-![要求显式的 FTP 通过 TLS](/images/install-pure-ftpd-enable-tls/filezilla-explicit-tls.jpg)
+![要求显式的 FTP 通过 TLS](/images/2018-10-09-install-pure-ftpd-enable-tls/filezilla-explicit-tls.jpg)
 
 ## 关于 Pure-FTPd 的配置文件
 

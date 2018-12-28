@@ -54,15 +54,15 @@ npm install webpack vue-template-compiler vue-loader --save-dev
         * components/
             * MyComponent.vue
 
-{% include_code index.html vue-webpack-example/index.html %}
+{% include_code index.html 2018-11-17-vue-webpack-example/index.html %}
 
-{% include_code src/index.js vue-webpack-example/src/index.js %}
+{% include_code src/index.js 2018-11-17-vue-webpack-example/src/index.js %}
 
-{% include_code src/App.vue vue-webpack-example/src/App.vue %}
+{% include_code src/App.vue 2018-11-17-vue-webpack-example/src/App.vue %}
 
-{% include_code src/components/MyComponent.vue vue-webpack-example/src/components/MyComponent.vue %}
+{% include_code src/components/MyComponent.vue 2018-11-17-vue-webpack-example/src/components/MyComponent.vue %}
 
-{% include_code webpack.config.js vue-webpack-example/webpack.config.js %}
+{% include_code webpack.config.js 2018-11-17-vue-webpack-example/webpack.config.js %}
 
 ## Webpack build
 

@@ -11,4 +11,4 @@ tags:
 
 Today, I created a new personal introduction for my live room on bilibili.
 
-[Online Demo](/assets/bilibili-live-personal-introduction/index.html)
+[Online Demo](/assets/2018-12-16-bilibili-live-personal-introduction/index.html)

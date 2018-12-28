@@ -30,7 +30,7 @@ tags:
 
 3. 打开筛选，筛选类型为 WS（即 WebSocket）的请求。
 
-![Network 选项卡，筛选 WS](/images/debug-bilibili-live-websocket/01.jpg)
+![Network 选项卡，筛选 WS](/images/2018-11-19-debug-bilibili-live-websocket/01.jpg)
 
 4. 鼠标悬停在代码位置的上方，可以看到请求的发出位置，以及它的调用栈。
 
@@ -38,7 +38,7 @@ tags:
 
     如果估计不好的话，最麻烦的方法也就是一个一个看了。
 
-![请求调用堆栈](/images/debug-bilibili-live-websocket/02.jpg)
+![请求调用堆栈](/images/2018-11-19-debug-bilibili-live-websocket/02.jpg)
 
 > [Tips]
 >
@@ -68,7 +68,7 @@ tags:
 
 当这个断点断下时，右侧有当前的调用栈，也能看到当前层中的局部变量。可以点击某一层，将代码切换到这一层的调用位置，同时把上下文切换到对应的位置，可以看到对应层的局部变量。左侧的代码中也会内联显示对应行内有关的变量的信息，方便调试。
 
-![调用堆栈调试](/images/debug-bilibili-live-websocket/03.jpg)
+![调用堆栈调试](/images/2018-11-19-debug-bilibili-live-websocket/03.jpg)
 
 这个在 Source 选项卡中的栈和之前在 Network 选项卡中的栈是一样的，我们只需要依次往下找，看看哪两层栈之间的上下文变化过于剧烈，就可以找到这个模块大概的层次了。
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2018-09-29 15:25:00 +0800
+date: 2018-09-29 15:25:00
 title: Ubuntu Use Noto Sans CJK SC as Default Fallback Font
 tags:
   - ubuntu

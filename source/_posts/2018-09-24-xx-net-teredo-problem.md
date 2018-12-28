@@ -16,7 +16,7 @@ tags:
 
 我今天再一次查看 [XX-Net IPv6 说明][xx-net-wiki-ipv6]，很随意的点开了 [Teredo Wikipedia][teredo-wikipedia]。简单浏览了一下，突然发现这个服务是需要开启 UDP 3544 端口。我猛然意识到我刚装系统之后，在防火墙中把大部分端口都禁了。
 
-![Windows Defender Firewall Advanced Settings](/images/xx-net-teredo-problem/firewall-settings.jpg)
+![Windows Defender Firewall Advanced Settings](/images/2018-09-24-xx-net-teredo-problem/firewall-settings.jpg)
 
 在高级安全 Windows Defender 防火墙设置中，把与 IPv6 有关的条目都启用，再试了一下果然就成功了。
 

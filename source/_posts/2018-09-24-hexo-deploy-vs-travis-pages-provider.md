@@ -29,7 +29,7 @@ script:
 
 而且也不知道是不是因为使用了 `nospam` 的邮箱，GitHub 无法识别我这个提交的来源用户，就将提交者的视为陌生人了。
 
-![hexo deploy travis pages provider different committers](/images/hexo-deploy-vs-travis-pages-provider/different-committers.jpg)
+![hexo deploy travis pages provider different committers](/images/2018-09-24-hexo-deploy-vs-travis-pages-provider/different-committers.jpg)
 
 于是，我就想，hexo 只负责生成静态页面，部署到 GitHub Pages 使用 Travis CI 的 Pages Provider，这样提交者会显示成 `travisbot`，一目了然，知道这个是自动提交的。而且配置文件似乎更简洁。
 

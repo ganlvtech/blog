@@ -16,14 +16,14 @@ tags:
 ## 问题引出
 
 ```html
-<a href="/assets/external-link-rel-no-opener/malicious.html" target="_blank">在线演示</a>
+<a href="/assets/2018-10-18-external-link-rel-no-opener/malicious.html" target="_blank">在线演示</a>
 ```
 
 这种链接的写法看似没有什么问题。
 
 但是如果这个链接的目标地址并不是自己可控的呢？比如下面这个链接
 
-<a href="/assets/external-link-rel-no-opener/malicious.html" target="_blank">在线演示</a>
+<a href="/assets/2018-10-18-external-link-rel-no-opener/malicious.html" target="_blank">在线演示</a>
 
 我们预期的结果是，打开一个新的页面。但是实际的结果是，的确打开新的页面了，但是原来的页面被更改到另一个网址上了。
 
@@ -75,10 +75,10 @@ tags:
 ## 解决
 
 ```html
-<a href="/assets/external-link-rel-no-opener/malicious.html" target="_blank" rel="noopener noreferrer">rel noopener noreferrer 的链接</a>
+<a href="/assets/2018-10-18-external-link-rel-no-opener/malicious.html" target="_blank" rel="noopener noreferrer">rel noopener noreferrer 的链接</a>
 ```
 
-<a href="/assets/external-link-rel-no-opener/malicious.html" target="_blank" rel="noopener noreferrer">rel noopener noreferrer 的链接</a>
+<a href="/assets/2018-10-18-external-link-rel-no-opener/malicious.html" target="_blank" rel="noopener noreferrer">rel noopener noreferrer 的链接</a>
 
 就是在 a 标签增加了一个 `rel="noopener noreferrer"` 属性，`noreferrer` 是为了兼容旧版浏览器，新版浏览器两种应该都支持。
 
