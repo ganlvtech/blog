@@ -86,8 +86,9 @@ tags:
 
 * [About rel=noopener What problems does it solve?][rel-noopener-problem-mathiasbynens]
 * [网站应该使用 rel="noopener" 打开外部锚][chrome-devtools-audit-noopener]
-* [DiscuzX 测试，吾爱破解钓鱼页面][52pojie-phishing]
+* [吾爱破解论坛钓鱼页面（使用 noopener）][52pojie-phishing]
+* <a href="/assets/2018-10-18-external-link-rel-no-opener/52pojie-phishing/malicious.html" target="_blank">吾爱破解论坛钓鱼页面（未使用 noopener）</a>
 
 [rel-noopener-problem-mathiasbynens]: https://mathiasbynens.github.io/rel-noopener/
 [chrome-devtools-audit-noopener]: https://developers.google.com/web/tools/lighthouse/audits/noopener
-[52pojie-phishing]: https://github.com/ganlvtech/52pojie-phishing/
+[52pojie-phishing]: /assets/2018-10-18-external-link-rel-no-opener/52pojie-phishing/malicious.html

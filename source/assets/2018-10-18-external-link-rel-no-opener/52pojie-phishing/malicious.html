@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>回去吧！</title>
+    <style>
+        body {
+            background-color: #cfc;
+        }
+        
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            -webkit-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        a {
+            color: rgba(255, 255, 255, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h1 id="unsafe">你为什么不返回上一个页面看看呢？</h1>
+        <h1 id="safe" style="display: none;">原来的页面是安全的、未经改动的。<code>window.opener</code> 是 <code>null</code>；恶作剧 <em>没有</em> 成功！</h1>
+        <p><a href="https://mathiasbynens.github.io/rel-noopener/">https://mathiasbynens.github.io/rel-noopener/</a></p>
+    </div>
+    <script>
+        if (window.opener) {
+            opener.location = '/assets/2018-10-18-external-link-rel-no-opener/52pojie-phishing/';
+        } else {
+            document.getElementById('unsafe').style.display = 'none';
+            document.getElementById('safe').style.display = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><![CDATA[
+<div style="height: 280px; width: 250px;">
+    <div style="height: 20px; width: 250px;margin-top: 3px;">
+        <div style="height: 20px; width: 200px; line-height: 20px; margin-left: 10px; font-size: 13px; font-weight: 600; color: #090; float: left;">
+            <b>关注官方微信：吾爱破解论坛</b>
+        </div>
+        <div style="float: right; height: 20px; width: 20px; margin-right: 2px;">
+            <a href="javascript:;" onclick="hideWindow('csu_wechat_scan_scan');" style="background-image: url(https://www.52pojie.cn/source/plugin/csu_wechat_scan/image/close.png); background-repeat: no-repeat; height: 20px; width: 20px; display: block; float: right;" ></a>
+        </div>
+    </div>
+    <div style="height: 220px; width: 220px; margin-top: 5px; margin-left: 15px;"><img width="220" height="220" src="https://www.52pojie.cn/source/plugin/csu_wechat_scan/image/weixin.jpg"/></div>
+    <div style="height: 20px; width: 220px; margin-top: 5px; margin-left: 15px; line-height: 20px; text-align: center; ">获取论坛最新信息，支持一键签到！</div>
+</div>
+]]></root>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><![CDATA[<div class="bm bw0">
+    <h3 class="flb">
+        <em id="return_message"> 吾爱破解 - LCG - LSG |安卓破解|病毒分析|破解软件|www.52pojie.cn - 搜索</em>
+        <span><a href="javascript:;" class="soflbc" onclick="hideWindow('jzso');" title="关闭">关闭</a></span>
+    </h3>
+    <div id="jz52scbar" class="jz52scbar_narrow cl">
+        <form id="jz52scbar_form" method="post" autocomplete="off" onsubmit="searchFocus($('jz52scbar_txt'))" action="https://www.52pojie.cn/search.php?searchsubmit=yes" target="_blank">
+            <input type="hidden" name="mod" id="jz52scbar_mod" value="search" />
+            <input type="hidden" name="formhash" value="4d73dede" />
+            <input type="hidden" name="srchtype" value="title" />
+            <input type="hidden" name="srhfid" value="0" />
+            <input type="hidden" name="srhlocality" value="plugin::jz52_top" />
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="jz52scbar_icon_td"></td>
+                    <td class="jz52scbar_txt_td"><input type="text" name="srchtxt" id="jz52scbar_txt" value="请输入搜索内容" autocomplete="off" x-webkit-speech speech /></td>
+                    <td class="jz52scbar_type_td"><a href="javascript:;" id="jz52scbar_type" class="xg1" onclick="showMenu(this.id)" hidefocus="true">搜索</a></td>
+                    <td class="jz52scbar_btn_td">
+                        <button type="submit" name="searchsubmit" id="jz52scbar_btn" sc="1" class="pn pnc" value="true"><strong>搜索</strong></button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <ul id="jz52scbar_type_menu" class="p_pop" style="display: none;">
+        <li><a href="javascript:;" rel="user">用户</a></li>
+    </ul>
+</div>
+<script>
+    initSearchmenu('jz52scbar', '');
+</script>]]></root>
