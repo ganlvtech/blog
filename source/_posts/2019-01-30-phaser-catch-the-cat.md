@@ -5,6 +5,7 @@ tags:
   - phaser
   - game
   - js
+  - html
 ---
 
 <div id="phaser-catch-the-cat"></div>
