@@ -12,7 +12,7 @@ tags:
 <button id="phaser-catch-the-cat-load-button">点击加载游戏</button>
 <script>
   document.getElementById('phaser-catch-the-cat-load-button').addEventListener('click', function () {
-    document.getElementById('phaser-catch-the-cat').innerHTML = '<iframe width="100%" height="600" src="/assets/2019-01-30-phaser-catch-the-cat/index.html"></iframe>';
+    document.getElementById('phaser-catch-the-cat').innerHTML = '<iframe width="100%" height="600" src="https://ganlvtech.github.io/phaser-catch-the-cat/index.html"></iframe>';
     this.remove();
   });
 </script>
@@ -45,4 +45,4 @@ Phaser 3 本身不支持在代码中内联 SVG 图片代码，所有的图片资
 
 ## 附录
 
-[在线游戏链接](/assets/2019-01-30-phaser-catch-the-cat/index.html)
+[在线游戏链接](https://ganlvtech.github.io/phaser-catch-the-cat/)
