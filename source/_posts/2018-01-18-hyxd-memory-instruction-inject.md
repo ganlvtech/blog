@@ -705,4 +705,4 @@ SHORT WINAPI GetAsyncKeyState(_In_ int vKey);
 >
 > 附件是我自己的 Cheat Engine 存档文件（密码52pojie.cn）。
 
-[下载 hyxd.zip](/assets/2018-01-18-hyxd-memory-instruction-inject/hyxd.zip)
+[下载 hyxd.zip](/downloads/files/2018-01-18-hyxd-memory-instruction-inject/hyxd.zip)
