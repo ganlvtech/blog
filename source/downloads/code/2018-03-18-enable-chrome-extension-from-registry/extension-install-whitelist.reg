@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallWhitelist]
+"1"="nmgnihglilniboicepgjclfiageofdfj"
+"2"="lmclkaiglphlgngpneeplnjmeedgajek"

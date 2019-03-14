@@ -21,14 +21,9 @@ Chrome 现在禁止加载自己打包生成的扩展程序了。
 
 新建一个 reg 文件，写入以下内容
 
-```ini
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallWhitelist]
-"1"="extension_id1"
-"2"="extension_id2"
-```
+{% include_code extension-install-whitelist.reg 2018-03-18-enable-chrome-extension-from-registry/extension-install-whitelist.reg %}
 
-这个 extension_id1 就是勾选 “开发者模式” 之后类似于 `nmgnihglilniboicepgjclfiageofdfj` 那个 ID。
+这个 `nmgnihglilniboicepgjclfiageofdfj` 是插件 ID，就是勾选 “开发者模式” 之后显示的那个 ID。替换成所用的插件的 ID 即可。
 
 然后双击这个 reg 文件，导入就行了。
 
