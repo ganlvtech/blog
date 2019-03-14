@@ -695,10 +695,6 @@ SHORT WINAPI GetAsyncKeyState(_In_ int vKey);
 
 9. 2018 年 1 月 26 日有人回帖称，已被秒封，请尽可能小心地进行破解。
 
-10. 有其他帖子有制作 Trainer 教程
-
-    原贴地址：https://www.52pojie.cn/thread-690777-1-1.html
-
 ## 附件
 
 > [Info]
