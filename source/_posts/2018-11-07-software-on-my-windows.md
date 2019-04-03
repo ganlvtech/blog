@@ -50,7 +50,11 @@ tags:
 ## Small Tools
 
 * [EdgeDeflector](https://github.com/da2x/EdgeDeflector/releases)
-* [ScreenToGif](https://www.screentogif.com/)
+* [ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
+* [SharpKeys](https://github.com/randyrants/sharpkeys/) From <kbd>Caps Lock</kbd> to <kbd>Left Ctrl</kbd>
+* [OnTopReplica](https://github.com/LorenzCK/OnTopReplica)
+* [KeyPress-OSD](https://github.com/marius-sucan/KeyPress-OSD)
+* [Greenshot](https://github.com/greenshot/greenshot)
 
 ## Media
 
