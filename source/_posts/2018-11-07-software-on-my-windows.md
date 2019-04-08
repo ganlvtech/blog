@@ -14,7 +14,8 @@ tags:
 * Microsoft Office
 * [VLC Media Player](https://www.videolan.org/vlc/)
 * [TIM](https://tim.qq.com/) Or [QQ](https://im.qq.com/)
-* [Sogou IME](https://)
+* [Sogou IME](https://pinyin.sogou.com/)
+* [7-Zip](https://www.7-zip.org/)
 
 ## For Developers
 
@@ -30,7 +31,7 @@ tags:
     * [Python](https://python.org/)
     * [PHP](https://php.net/)
     * [Java](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-    * [Go](https://golang.org/)
+    * [Golang](https://golang.org/) [Golang Mirror](https://golang.google.cn/)
     * [.NET](https://www.microsoft.com/net)
 
 * IDE
@@ -46,15 +47,23 @@ tags:
     * [Fiddler](https://www.telerik.com/fiddler)
     * [Wireshark](https://www.wireshark.org/)
     * [nmap](https://nmap.org/)
+    * [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser)
+
+* Reverse
+
+    * [Cheat Engine](https://github.com/cheat-engine/cheat-engine/)
+    * [x64dbg](https://github.com/x64dbg/x64dbg)
 
 ## Small Tools
 
-* [EdgeDeflector](https://github.com/da2x/EdgeDeflector/releases)
+* [EdgeDeflector](https://github.com/da2x/EdgeDeflector)
 * [ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
 * [SharpKeys](https://github.com/randyrants/sharpkeys/) From <kbd>Caps Lock</kbd> to <kbd>Left Ctrl</kbd>
 * [OnTopReplica](https://github.com/LorenzCK/OnTopReplica)
 * [KeyPress-OSD](https://github.com/marius-sucan/KeyPress-OSD)
 * [Greenshot](https://github.com/greenshot/greenshot)
+* [AutoHotKey](https://github.com/AutoHotkey/AutoHotkey)
+* [Everything](https://www.voidtools.com/)
 
 ## Media
 
