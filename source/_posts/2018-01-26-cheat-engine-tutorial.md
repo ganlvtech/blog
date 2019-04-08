@@ -1,5 +1,5 @@
 ---
-title: Cheat Engine 基础教程
+title: Cheat Engine 基础教程 CE Tutorial
 date: 2018-01-26 06:59:57
 tags:
   - cheatengine
