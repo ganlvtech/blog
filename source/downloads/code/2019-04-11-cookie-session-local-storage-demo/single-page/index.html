@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>游泳健身了解一下</title>
+    <link rel="stylesheet" href="../common/style.css">
+</head>
+
+<body>
+    <h1>游泳健身了解一下</h1>
+    <img class="strong-man" src="../common/strong-man.png" alt="长胡子猛男">
+
+    <div class="form" id="form-1">
+        <h2>问卷 1</h2>
+
+        <form>
+
+            <div>
+                <p>你喜欢游泳吗？</p>
+                <input type="radio" name="swim" value="1" id="swim-1">
+                <label for="swim-1">喜欢</label>
+                <input type="radio" name="swim" value="0" id="swim-0">
+                <label for="swim-0">不喜欢</label>
+            </div>
+
+            <div>
+                <p>你喜欢拳击吗？</p>
+                <input type="radio" name="boxing" value="1" id="boxing-1">
+                <label for="boxing-1">喜欢</label>
+                <input type="radio" name="boxing" value="0" id="boxing-0">
+                <label for="boxing-0">不喜欢</label>
+            </div>
+
+            <p>
+                <input type="submit" value="提交">
+            </p>
+
+        </form>
+    </div>
+
+    <div class="form" id="form-2" style="display: none;">
+        <h2>问卷 2</h2>
+
+        <form action="submit2.php" method="POST">
+
+            <input type="hidden" name="swim">
+            <input type="hidden" name="boxing">
+
+            <div>
+                <p>你要不要报一个健身班？</p>
+                <input type="radio" name="go" value="1" id="go-1">
+                <label for="go-1">要</label>
+                <input type="radio" name="go" value="0" id="go-0">
+                <label for="go-0">不要</label>
+            </div>
+
+            <p>
+                <input type="submit" value="提交">
+            </p>
+
+        </form>
+    </div>
+
+    <script>
+        var form1 = document.querySelector('#form-1');
+        var form2 = document.querySelector('#form-2');
+        form1.addEventListener('submit', function (e) {
+            form2.querySelector('input[name="swim"]').value = form1.querySelector('input[name="swim"]:checked').value;
+            form2.querySelector('input[name="boxing"]').value = form1.querySelector('input[name="boxing"]:checked').value;
+            form1.style.display = 'none';
+            form2.style.display = '';
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
