@@ -62,8 +62,18 @@ tags:
 * [OnTopReplica](https://github.com/LorenzCK/OnTopReplica)
 * [KeyPress-OSD](https://github.com/marius-sucan/KeyPress-OSD)
 * [Greenshot](https://github.com/greenshot/greenshot)
+* [Snipaste](https://www.microsoft.com/store/apps/9p1wxpkb68kx?cid=snipaste)
 * [AutoHotKey](https://github.com/AutoHotkey/AutoHotkey)
 * [Everything](https://www.voidtools.com/)
+
+## Chrome Extensions
+
+* [Tampermonkey](https://github.com/Tampermonkey/tampermonkey)
+* [Octotree](https://github.com/ovity/octotree)
+* [JSON Formatter](https://github.com/callumlocke/json-formatter)
+* [gooreplacer](https://github.com/jiacai2050/gooreplacer)
+* [Humble New Tab Page](https://github.com/quodroc/HumbleNewTabPage)
+* [Canvas Fingerprint Blocker](https://github.com/joue-quroi/canvas-fingerprint-blocker) and [My fork](https://github.com/ganlvtech/canvas-fingerprint-blocker)
 
 ## Media
 
