@@ -1,6 +1,8 @@
 ---
 title: PHP 解密：EnPHP 混淆加密
 date: 2019-03-01 20:08:55
+categories:
+  - hack
 tags:
   - php
   - enphp

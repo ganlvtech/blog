@@ -1,6 +1,8 @@
 ---
 title: 调试分析 BiliBili 直播 WebSocket 协议
 date: 2018-11-19 04:08:36
+categories:
+  - hack
 tags:
   - bilibili
   - live

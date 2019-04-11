@@ -1,6 +1,8 @@
 ---
 title: Go Simple HTTP Server Demo
 date: 2018-12-09 06:01:35
+categories:
+  - demo
 tags:
   - golang
   - http

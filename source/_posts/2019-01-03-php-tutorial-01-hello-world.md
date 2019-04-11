@@ -1,11 +1,13 @@
 ---
 title: 'PHP Tutorial 01 - Hello, world!'
+date: 2019-01-03 16:35:34
+categories:
+  - php-tutorial
 tags:
   - php
   - tutorial
   - chrome
   - PATH
-date: 2019-01-03 16:35:34
 ---
 
 ## 安装 Chrome

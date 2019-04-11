@@ -1,9 +1,11 @@
 ---
 title: PHP Tutorial 00 - Why PHP?
+date: 2019-01-03 16:35:15
+categories:
+  - php-tutorial
 tags:
   - php
   - tutorial
-date: 2019-01-03 16:35:15
 ---
 
 ## 你是怎么得知 PHP 的？

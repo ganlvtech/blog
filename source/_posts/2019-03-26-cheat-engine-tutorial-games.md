@@ -1,6 +1,8 @@
 ---
 title: Cheat Engine 进阶教程 CE Tutorial Games
 date: 2019-03-26 21:17:59
+categories:
+  - cheat-engine-tutorial
 tag:
   - cheatengine
   - tutorial

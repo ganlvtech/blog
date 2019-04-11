@@ -1,6 +1,8 @@
 ---
 title: 虚拟机安装 Ubuntu Server 18.04
 date: 2018-10-27 14:13:12
+categories:
+  - installation
 tags:
   - ubuntu
   - virtualbox

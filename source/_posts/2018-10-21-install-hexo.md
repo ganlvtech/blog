@@ -1,6 +1,8 @@
 ---
 title: 安装 Hexo
 date: 2018-10-21 19:40:15
+categories:
+  - installation
 tags:
   - hexo
   - node.js

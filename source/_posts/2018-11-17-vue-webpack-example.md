@@ -1,6 +1,8 @@
 ---
 title: A Simple Vue Project Build With Webpack
 date: 2018-11-17 15:12:25
+categories:
+  - demo
 tags:
   - vue
   - webpack

@@ -1,6 +1,8 @@
 ---
 title: CKFinder 3 验证算法分析
 date: 2018-03-17 17:46:53
+categories:
+  - hack
 tags:
   - js
   - keygen

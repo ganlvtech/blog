@@ -1,6 +1,8 @@
 ---
 title: "Cookie, Session, Local Storage 演示"
 date: 2019-04-11 03:33:35
+categories:
+  - demo
 tags:
   - cookie
   - session

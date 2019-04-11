@@ -1,6 +1,8 @@
 ---
 title: Can you HACK it?
 date: 2019-01-12 22:26:27
+categories:
+  - hack
 tags:
   - hack
   - challenge

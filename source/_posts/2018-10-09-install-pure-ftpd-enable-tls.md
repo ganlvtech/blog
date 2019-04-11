@@ -1,12 +1,14 @@
 ---
 title: 安装 Pure-FTPd 并启用 TLS
 date: 2018-10-09 01:38:17
+categories:
+  - installation
 tags:
-    - ftp
-    - pure-ftpd
-    - ssl
-    - tls
-    - ubuntu
+  - ftp
+  - pure-ftpd
+  - ssl
+  - tls
+  - ubuntu
 ---
 
 <!-- toc -->

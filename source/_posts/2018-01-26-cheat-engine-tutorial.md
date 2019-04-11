@@ -1,6 +1,8 @@
 ---
 title: Cheat Engine 基础教程 CE Tutorial
 date: 2018-01-26 06:59:57
+categories:
+  - cheat-engine-tutorial
 tags:
   - cheatengine
   - tutorial

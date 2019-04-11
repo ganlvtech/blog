@@ -1,6 +1,8 @@
 ---
 title: webpack-demo
 date: 2019-01-07 03:24:39
+categories:
+  - demo
 tags:
   - webpack
   - html

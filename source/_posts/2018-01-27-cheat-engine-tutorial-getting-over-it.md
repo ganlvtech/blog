@@ -1,6 +1,8 @@
 ---
 title: CE 实例教程 Getting Over It
 date: 2018-01-27 11:40:13
+categories:
+  - cheat-engine-tutorial
 tags:
   - cheatengine
   - tutorial
