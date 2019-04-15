@@ -125,6 +125,17 @@ toc:
 ## https://github.com/knksmith57/hexo-renderer-sass
 node_sass:
 
+## https://github.com/hexojs/hexo-math
+math:
+  engine: 'mathjax'
+  mathjax:
+    src: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
+    config:
+      tex2jax:
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        processEscapes: true
+
 ## Themes: https://hexo.io/themes/
 theme: landscape
 theme_config:
