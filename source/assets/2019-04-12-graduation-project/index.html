@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>膨胀机的热力性能及结构设计</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>膨胀机的热力性能及结构设计</h1>
+    <div id="app">
+        <h2>热力计算与流道基本尺寸的确定</h2>
+        <h3>已知条件</h3>
+        工质 <input type="text" name="substance" value="空气" disabled>（质量分数 氮气/氩气/氧气 = 75.57/1.2691/23.16）<br>
+        气体常数 $ R_g $ <input type="text" name="R_g" v-model="R_g"> $ J / (kg \cdot K) $<br>
+        等熵指数 $ \kappa $ <input type="text" name="kappa" v-model="kappa"><br>
+        相对分子质量 $ M_r $ <input type="text" name="substance" v-model="substance"> $ g/mol $<br>
+        膨胀气体量 $ q_V $ <input type="text" name="q_V" v-model="q_V"> $ Nm^3/h $<br>
+        膨胀机进口温度 $ T_0 $ <input type="text" name="T_0" v-model="T_0"> $ K $<br>
+        膨胀机进口压力 $ p_0 $ <input type="text" name="p_0" v-model="p_0"> $ MPa $<br>
+        膨胀机出口压力 $ p_2 $ <input type="text" name="p_2" v-model="p_2"> $ MPa $<br>
+        <h3>估取及选用值</h3>
+        <h4>估取</h4>
+        喷嘴中的速度系数 $ \varphi $ <input type="text" name="phi" v-model="phi"><br>
+        工作轮中的速度系数 $ \psi $ <input type="text" name="psi" v-model="psi"><br>
+        工作轮叶高轮径比 $ l_1 / D_1 $ <input type="text" name="l_1_D_1" v-model="l_1_D_1"><br>
+        工作轮相对轴向间隙 $ \delta / l_m $ <input type="text" name="delta_l_m" v-model="delta_l_m"><br>
+        喷嘴出口减窄系数 $ \tau_N $ <input type="text" name="tau_N" v-model="tau_N"><br>
+        工作轮进口减窄系数 $ \tau_1 $ <input type="text" name="tau_1" v-model="tau_1"><br>
+        工作轮出口减窄系数 $ \tau_2 $ <input type="text" name="tau_2" v-model="tau_2"><br>
+        <h4>选定</h4>
+        喷嘴出口叶片角 $ \alpha_1' $ <input type="text" name="alpha_1_" v-model="alpha_1_"> $ ^{\circ} $<br>
+        工作轮进口叶片角 $ \beta_1' $ <input type="text" name="beta_1_" v-model="beta_1_"> $ ^{\circ} $<br>
+        工作轮出口叶片角 $ \beta_2' $ <input type="text" name="beta_2_" v-model="beta_2_"> $ ^{\circ} $<br>
+        <h4>选取</h4>
+        轮径比 $ \mu $ <input type="text" name="mu" v-model="mu"><br>
+        反动度 $ \rho $ <input type="text" name="rho" v-model="rho"><br>
+        特性比 $ \bar{u}_1 $ <input type="text" name="bar_u_1" v-model="bar_u_1"><br>
+        <h4>估取扩压比</h4>
+        扩压比 $ p_2 / p_3 $ <input type="text" name="p_2_p_3" v-model="p_2_p_3"><br>
+        工作轮出口压力 $ p_3 = $ <span v-text="p_3"></span> $ MPa $<br>
+        <h3>喷嘴中的流动</h3>
+        由 $ p_0, T_0 $ 及 $ p_2, p_3 $ 从 i-s 图上可查得（以下比焓的参考点为 REFPROP 中的默认点）<br>
+        进口比焓 $ i_0 = $ <span v-text="i_0"></span> $ kJ/kg $<br>
+        膨胀机出口理想比焓 $ i_{2s} = $ <span v-text="i_2s"></span> $ kJ/kg $<br>
+        工作轮出口理想比焓 $ i_{2s}' = $ <span v-text="i_2s_"></span> $ kJ/kg $<br>
+        膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span v-text="h_s"></span> $ kJ/kg $<br>
+        通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span v-text="h_s_"></span> $ kJ/kg $<br>
+        等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span v-text="c_s"></span> $ m/s $<br>
+        由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span v-text="Z_0"></span><br>
+        喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span v-text="h_1s"></span> $ kJ/kg $<br>
+        喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span v-text="c_1"></span> $ m/s $<br>
+        喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span v-text="i_1s"></span> $ kJ/kg $<br>
+        喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span v-text="i_1"></span> $ kJ/kg $<br>
+        由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span v-text="p_1"></span> $ MPa $<br>
+        由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span v-text="T_1"></span> $ ^{\circ}C $<br>
+        由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span v-text="Z_1"></span><br>
+        喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span v-text="rho_1"></span> $ kg/m^3 $<br>
+        多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span v-text="n"></span><br>
+        喷嘴出口喉部界面速度 $ c^* = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span v-text="c_"></span> $ m/s $ <br>
+        由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角，
+        $$ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p} {p_0}) ^ {\frac {n - 1} {n}}}} = $$
+        <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span>
+        $$ \sin (\alpha_1' + \delta) = $$ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span> $ \sin (\alpha_1') = $ <span v-text="sin_alpha_1__delta"></span>
+        $$ \delta = $$ <span v-text="delta"></span>
+        <br>
+    </div>
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    R_g: 287.2,
+                    kappa: 1.4,
+                    substance: 28.96,
+                    q_V: 420,
+                    T_0: 130,
+                    p_0: 0.48,
+                    p_2: 0.11,
+                    phi: 0.96,
+                    psi: 0.84,
+                    l_1_D_1: 0.04,
+                    delta_l_m: 0.017,
+                    tau_N: 0.98,
+                    tau_1: 0.965,
+                    tau_2: 0.775,
+                    alpha_1_: 16,
+                    beta_1_: 90,
+                    beta_2_: 30.25,
+                    mu: 0.498,
+                    rho: 0.49,
+                    bar_u_1: 0.66,
+                    p_2_p_3: 1.04,
+                }
+            },
+            computed: {
+                p_3: function () {
+                    return this.p_2 / this.p_2_p_3;
+                },
+                i_0: function () {
+                    return 124.82;
+                },
+                i_2s: function () {
+                    return 81.994;
+                },
+                i_2s_: function () {
+                    return 81.081;
+                },
+                h_s: function () {
+                    return 44.701;
+                },
+                h_s_: function () {
+                    return 45.654;
+                },
+                c_s: function () {
+                    return Math.sqrt(2 * this.h_s_ * 1000);
+                },
+                Z_0: function () {
+                    return 0.95344;
+                },
+                h_1s: function () {
+                    return (1 - this.rho) * this.h_s_;
+                },
+                c_1: function () {
+                    return this.phi * Math.sqrt(2 * this.h_1s * 1000);
+                },
+                i_1s: function () {
+                    return this.i_0 - this.h_1s;
+                },
+                i_1: function () {
+                    return this.i_0 - Math.pow(this.phi, 2) * this.h_1s;
+                },
+                p_1: function () {
+                    return 0.27886;
+                },
+                T_1: function () {
+                    return 112.65;
+                },
+                Z_1: function () {
+                    return 0.95881;
+                },
+                rho_1: function () {
+                    return (this.p_1 * 1e6) / (this.Z_1 * this.R_g * this.T_1);
+                },
+                n: function () {
+                    return this.kappa / (this.kappa - Math.pow(this.phi, 2) * (this.kappa - 1));
+                },
+                c_: function () {
+                    return Math.sqrt(2 * this.Z_0 * this.R_g * this.T_0 * (this.kappa / (this.kappa - 1)) * ((this.n - 1) / (this.n + 1)));
+                },
+                sin_alpha_1__delta_sin_alpha_1_: function () {
+                    return (Math.pow(2 / (this.n + 1), 1 / (this.n - 1)) * Math.sqrt((this.n - 1) / (this.n + 1)))
+                        / (Math.pow(this.p_1 / this.p_0, 1 / this.n) * Math.sqrt(1 - Math.pow(this.p_1 / this.p_0, (this.n - 1) / this.n)))
+                },
+                sin_alpha_1__delta: function () {
+                    return this.sin_alpha_1__delta_sin_alpha_1_ * Math.sin(this.alpha_1_ / 180 * Math.PI)
+                },
+                delta: function () {
+                    return Math.asin(this.sin_alpha_1__delta) - this.alpha_1_
+                },
+                
+            }
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <script>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true
+            }
+        });
+    </script>
+</body>
+</html>
