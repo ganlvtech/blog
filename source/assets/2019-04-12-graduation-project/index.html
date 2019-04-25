@@ -59,12 +59,17 @@
         喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span v-text="rho_1"></span> $ kg/m^3 $<br>
         多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span v-text="n"></span><br>
         喷嘴出口喉部界面速度 $ c^* = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span v-text="c_"></span> $ m/s $ <br>
-        由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角，
-        $$ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p} {p_0}) ^ {\frac {n - 1} {n}}}} = $$
-        <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span>
-        $$ \sin (\alpha_1' + \delta) = $$ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span> $ \sin (\alpha_1') = $ <span v-text="sin_alpha_1__delta"></span>
-        $$ \delta = $$ <span v-text="delta"></span>
-        <br>
+        由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角， $ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span><br>
+        $ \sin (\alpha_1' + \delta) = $ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span> $ \sin (\alpha_1') = $ <span v-text="sin_alpha_1__delta"></span><br>
+        $ \delta = $ <span v-text="delta"></span> $ ^{\circ} = $ <span v-text="delta_in_minutes"></span> $ ' $<br>
+        一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ}  $<br>
+        喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span v-text="c_1_"></span> $ m/s $<br>
+        比较第 5、13、15 三项可知 $ c_1 &gt; c_1' &gt; c^* $ 说明在喷嘴喉部截面之前已经达到声速<br>
+        喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span v-text="Ma_c1"></span><br>
+        一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴<br>
+        喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span v-text="q_N"></span> $ kJ/kg $<br>
+        喷嘴中的相对能量损失 $ \epsilon_N = \frac {q_N} {h_s'} = $ <span v-text="epsilon_N"></span><br>
+        喉部气体密度 $ \rho^* = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span v-text="rho__"></span> $ kg/m^3 $<br>
     </div>
     <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

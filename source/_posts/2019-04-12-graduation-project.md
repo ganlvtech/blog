@@ -180,8 +180,28 @@ $ p_2 / p_3 = 1.04 $，因而 $ p_3 = p_2 / 1.04 = 0.11 MPa / 1.04 = 0.10577 MPa
 14. 由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角，
 
 $$
-\frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p} {p_0}) ^ {\frac {n - 1} {n}}}}
+    \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p} {p_0}) ^ {\frac {n - 1} {n}}}} = 1.00465
 $$
+
+    $ \sin (\alpha_1' + \delta) = 1.00465 \sin (\alpha_1') = 0.27692 $
+
+    $ \delta = 0.07649 ^{\circ} = 4.58973 ' $
+
+    一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ}  $
+
+15. 喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = 205.202 m/s $
+
+    比较第 5、13、15 三项可知 $ c_1 &gt; c_1' &gt; c^* $ 说明在喷嘴喉部截面之前已经达到声速
+
+16. 喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = 1.00954 $
+
+    一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴
+
+17. 喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = 1.82542 kJ/kg $
+
+18. 喷嘴中的相对能量损失 $ \epsilon_N = \frac {q_N} {h_s'} = 0.03998 $
+
+19. 喉部气体密度 $ \rho^* = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = 8.51208 kg/m^3 $
 
 ![i-s 图](/images/2019-04-12-graduation-project/i-s-graph.png)
 
