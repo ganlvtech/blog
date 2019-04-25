@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>膨胀机的热力性能及结构设计</title>
     <style>
-
+        html {
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -39,37 +41,37 @@
         特性比 $ \bar{u}_1 $ <input type="text" name="bar_u_1" v-model="bar_u_1"><br>
         <h4>估取扩压比</h4>
         扩压比 $ p_2 / p_3 $ <input type="text" name="p_2_p_3" v-model="p_2_p_3"><br>
-        工作轮出口压力 $ p_3 = $ <span v-text="p_3"></span> $ MPa $<br>
+        工作轮出口压力 $ p_3 = $ <span>{{ p_3 | round }}</span> $ MPa $<br>
         <h3>喷嘴中的流动</h3>
         由 $ p_0, T_0 $ 及 $ p_2, p_3 $ 从 i-s 图上可查得（以下比焓的参考点为 REFPROP 中的默认点）<br>
-        进口比焓 $ i_0 = $ <span v-text="i_0"></span> $ kJ/kg $<br>
-        膨胀机出口理想比焓 $ i_{2s} = $ <span v-text="i_2s"></span> $ kJ/kg $<br>
-        工作轮出口理想比焓 $ i_{2s}' = $ <span v-text="i_2s_"></span> $ kJ/kg $<br>
-        膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span v-text="h_s"></span> $ kJ/kg $<br>
-        通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span v-text="h_s_"></span> $ kJ/kg $<br>
-        等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span v-text="c_s"></span> $ m/s $<br>
-        由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span v-text="Z_0"></span><br>
-        喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span v-text="h_1s"></span> $ kJ/kg $<br>
-        喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span v-text="c_1"></span> $ m/s $<br>
-        喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span v-text="i_1s"></span> $ kJ/kg $<br>
-        喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span v-text="i_1"></span> $ kJ/kg $<br>
-        由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span v-text="p_1"></span> $ MPa $<br>
-        由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span v-text="T_1"></span> $ ^{\circ}C $<br>
-        由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span v-text="Z_1"></span><br>
-        喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span v-text="rho_1"></span> $ kg/m^3 $<br>
-        多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span v-text="n"></span><br>
-        喷嘴出口喉部界面速度 $ c^* = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span v-text="c_"></span> $ m/s $ <br>
-        由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角， $ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span><br>
-        $ \sin (\alpha_1' + \delta) = $ <span v-text="sin_alpha_1__delta_sin_alpha_1_"></span> $ \sin (\alpha_1') = $ <span v-text="sin_alpha_1__delta"></span><br>
-        $ \delta = $ <span v-text="delta"></span> $ ^{\circ} = $ <span v-text="delta_in_minutes"></span> $ ' $<br>
+        进口比焓 $ i_0 = $ <span>{{ i_0 | round }}</span> $ kJ/kg $<br>
+        膨胀机出口理想比焓 $ i_{2s} = $ <span>{{ i_2s | round }}</span> $ kJ/kg $<br>
+        工作轮出口理想比焓 $ i_{2s}' = $ <span>{{ i_2s_ | round }}</span> $ kJ/kg $<br>
+        膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span>{{ h_s | round }}</span> $ kJ/kg $<br>
+        通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span>{{ h_s_ | round }}</span> $ kJ/kg $<br>
+        等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span>{{ c_s | round }}</span> $ m/s $<br>
+        由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span>{{ Z_0 | round }}</span><br>
+        喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span>{{ h_1s | round }}</span> $ kJ/kg $<br>
+        喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span>{{ c_1 | round }}</span> $ m/s $<br>
+        喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span>{{ i_1s | round }}</span> $ kJ/kg $<br>
+        喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span>{{ i_1 | round }}</span> $ kJ/kg $<br>
+        由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span>{{ p_1 | round }}</span> $ MPa $<br>
+        由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span>{{ T_1 | round }}</span> $ ^{\circ}C $<br>
+        由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span>{{ Z_1 | round }}</span><br>
+        喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span>{{ rho_1 | round }}</span> $ kg/m^3 $<br>
+        多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span>{{ n | round }}</span><br>
+        喷嘴出口喉部界面速度 $ c^* = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span>{{ c_ | round }}</span> $ m/s $ <br>
+        由于 $ c_1 > c^* $，采用收缩喷嘴时，气流在斜切口有偏转角， $ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} = \frac {(\frac {2} {n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}} {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt {1 - (\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $ <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span><br>
+        $ \sin (\alpha_1' + \delta) = $ <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span> $ \sin (\alpha_1') = $ <span>{{ sin_alpha_1__delta | round }}</span><br>
+        $ \delta = $ <span>{{ delta | round }}</span> $ ^{\circ} = $ <span>{{ delta_in_minutes | round }}</span> $ ' $<br>
         一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ}  $<br>
-        喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span v-text="c_1_"></span> $ m/s $<br>
+        喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span>{{ c_1_ | round }}</span> $ m/s $<br>
         比较第 5、13、15 三项可知 $ c_1 &gt; c_1' &gt; c^* $ 说明在喷嘴喉部截面之前已经达到声速<br>
-        喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span v-text="Ma_c1"></span><br>
+        喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span>{{ Ma_c1 | round }}</span><br>
         一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴<br>
-        喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span v-text="q_N"></span> $ kJ/kg $<br>
-        喷嘴中的相对能量损失 $ \epsilon_N = \frac {q_N} {h_s'} = $ <span v-text="epsilon_N"></span><br>
-        喉部气体密度 $ \rho^* = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span v-text="rho__"></span> $ kg/m^3 $<br>
+        喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span>{{ q_N | round }}</span> $ kJ/kg $<br>
+        喷嘴中的相对能量损失 $ \epsilon_N = \frac {q_N} {h_s'} = $ <span>{{ epsilon_N | round }}</span><br>
+        喉部气体密度 $ \rho^* = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span>{{ rho__ | round }}</span> $ kg/m^3 $<br>
     </div>
     <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -100,6 +102,11 @@
                     bar_u_1: 0.66,
                     p_2_p_3: 1.04,
                 }
+            },
+            filters: {
+                round: function (val) {
+                    return val.toPrecision(5)
+                },
             },
             computed: {
                 p_3: function () {
@@ -164,9 +171,26 @@
                     return this.sin_alpha_1__delta_sin_alpha_1_ * Math.sin(this.alpha_1_ / 180 * Math.PI)
                 },
                 delta: function () {
-                    return Math.asin(this.sin_alpha_1__delta) - this.alpha_1_
+                    return Math.asin(this.sin_alpha_1__delta) / Math.PI * 180 - this.alpha_1_
                 },
-                
+                delta_in_minutes: function () {
+                    return this.delta * 60;
+                },
+                c_1_: function () {
+                    return Math.sqrt(this.n * this.Z_1 * this.R_g * this.T_1);
+                },
+                Ma_c1: function () {
+                    return this.c_1 / this.c_1_;
+                },
+                q_N: function () {
+                    return (1 - Math.pow(this.phi, 2)) * this.h_1s;
+                },
+                epsilon_N: function () {
+                    return this.q_N / this.h_s_;
+                },
+                rho__: function () {
+                    return Math.pow(2 / (this.n + 1), 1 / (this.n - 1)) * (this.p_0 * 1e6) / (this.Z_0 * this.R_g * this.T_0);
+                },
             }
         });
     </script>
