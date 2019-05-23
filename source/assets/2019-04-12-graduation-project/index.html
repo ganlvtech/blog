@@ -60,20 +60,20 @@
         <ol>
             <li>由 $ p_0, T_0 $ 及 $ p_2, p_3 $ 从 i-s 图上可查得（以下比焓的参考点为 REFPROP 中的默认点）
                 <ul>
-                    <li>进口比焓 $ i_0 = $ <span>{{ i_0 | round }}</span> $ kJ/kg $</li>
-                    <li>膨胀机出口理想比焓 $ i_{2s} = $ <span>{{ i_2s | round }}</span> $ kJ/kg $</li>
-                    <li>工作轮出口理想比焓 $ i_{2s}' = $ <span>{{ i_2s_ | round }}</span> $ kJ/kg $</li>
-                    <li>膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span>{{ h_s | round }}</span> $ kJ/kg $</li>
-                    <li>通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span>{{ h_s_ | round }}</span> $ kJ/kg $</li>
+                    <li>进口比焓 $ i_0 = $ <span>{{ i_0 | round }}</span> $ J/kg $</li>
+                    <li>膨胀机出口理想比焓 $ i_{2s} = $ <span>{{ i_2s | round }}</span> $ J/kg $</li>
+                    <li>工作轮出口理想比焓 $ i_{2s}' = $ <span>{{ i_2s_ | round }}</span> $ J/kg $</li>
+                    <li>膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span>{{ h_s | round }}</span> $ J/kg $</li>
+                    <li>通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span>{{ h_s_ | round }}</span> $ J/kg $</li>
                 </ul>
             </li>
             <li>等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span>{{ c_s | round }}</span> $ m/s $</li>
             <li>由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span>{{ Z_0 | round }}</span></li>
-            <li>喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span>{{ h_1s | round }}</span> $ kJ/kg $</li>
+            <li>喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span>{{ h_1s | round }}</span> $ J/kg $</li>
             <li>喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span>{{ c_1 | round }}</span> $ m/s $</li>
-            <li>喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span>{{ i_1s | round }}</span> $ kJ/kg $</li>
-            <li>喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span>{{ i_1 | round }}</span> $ kJ/kg $</li>
-            <li>由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span>{{ p_1 | round }}</span> $ MPa $</li>
+            <li>喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span>{{ i_1s | round }}</span> $ J/kg $</li>
+            <li>喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span>{{ i_1 | round }}</span> $ J/kg $</li>
+            <li>由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span>{{ p_1 | round }}</span> $ Pa $</li>
             <li>由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span>{{ T_1 | round }}</span> $ K $</li>
             <li>由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span>{{ Z_1 | round }}</span></li>
             <li>喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span>{{ rho_1 | round }}</span> $ kg/m^3 $</li>
@@ -86,7 +86,8 @@
                 {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt{1 -(\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $
                 <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span><br>
                 $ \sin (\alpha_1' + \delta) = $ <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span> $ \sin (\alpha_1') = $ <span>{{ sin_alpha_1__delta | round }}</span> $ \delta = $ <span>{{ delta | round }}</span> $ ^{\circ} = $ <span>{{ delta | deg_to_minute | round }}</span> $ ' $<br>
-                $ \alpha_1 = \alpha_1' + \delta = $ <span>{{ alpha_1 | round }}</span> $ ^{\circ} $<br>
+                $ \alpha_1 = \alpha_1' + \delta = $ <span>{{ alpha_1 | rad_to_deg | round }}</span> $ ^{\circ} $<br>
+                $ \delta = $ <span>{{ delta | rad_to_deg | round }}</span> $ ^{\circ} $<br>
                 一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ} $
             </li>
             <li>喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span>{{ c_1_ | round }}</span> $ m/s $<br>
@@ -95,7 +96,7 @@
             <li>喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span>{{ Ma_c1 | round }}</span><br>
                 一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴
             </li>
-            <li>喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span>{{ q_N | round }}</span> $ kJ/kg $</li>
+            <li>喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span>{{ q_N | round }}</span> $ J/kg $</li>
             <li>喷嘴中的相对能量损失 $ \xi_N = \frac {q_N} {h_s'} = $ <span>{{ xi_N | round }}</span></li>
             <li>喉部气体密度 $ \rho^\ast = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span>{{ rho_ast | round }}</span> $ kg/m^3 $</li>
         </ol>
@@ -105,21 +106,21 @@
             <li>出口圆周速度 $ u_{2m} = \mu u_1' = $ <span>{{ u_2m | round }}</span> $ m/s $</li>
             <li>工作轮进口气流角<br>
                 $ \tan {\beta_1} = \frac {\sin {\alpha_1}} {\cos {\alpha_1} - \frac {u_1} {c_1}} = $ <span>{{ tan_beta_1 | round }}</span><br>
-                $ \beta_1 = 180 ^{\circ} + $ <span>{{ beta_1_original | round }}</span> $ ^{\circ} = $ <span>{{ beta_1 | round }}</span> $ ^{\circ} $
+                $ \beta_1 = 180 ^{\circ} + $ <span>{{ beta_1_raw | rad_to_deg | round }}</span> $ ^{\circ} = $ <span>{{ beta_1 | rad_to_deg | round }}</span> $ ^{\circ} $
             </li>
             <li>进工作轮相对速度 $ w_1 = \frac {c_1 \sin {\alpha_1}} {\sin {\beta_1}} = $ <span>{{ w_1 | round }}</span> $ m/s $</li>
             <li>进工作轮相对速度的圆周分速度 $ w_{1u} = c_1 \cos{\alpha_1} - u_1 = $ <span>{{ w_1u | round }}</span> $ m/s $</li>
             <li>进工作轮相对速度的径向分速度 $ w_{1r} = c_1 \sin{\beta_1} = $ <span>{{ w_1r | round }}</span> $ m/s $</li>
             <li>进工作轮处相对速度的马赫数 $ {Ma}_{w_1} = \frac {w_1} {c_1'} = $ <span>{{ Ma_w_1 | round }}</span>，一般希望 $ {Ma}_{w_1} &lt; 0.5 $，以免过大的进口损失。</li>
-            <li>工作轮进口冲击损失 $ q_{w_{1u}} = \frac {w_{1u}^2} {2} = $ <span>{{ q_w_u1 | round }}</span> $ kJ/kg $</li>
-            <li>工作轮进口比焓 $ i_1' = i_1 + q_{w_{1u}} = $ <span>{{ i_1_ | round }}</span> $ kJ/kg $，由于冲击损失很像，工作轮进口状态可以认为与喷嘴出口状态相同。</li>
-            <li>由 $ p_1, i_1 $ 及 $ p_3 $ 从 i-s 图可查得工作轮出口等熵比焓 $ i_{2s}'' = $ <span>{{ i_2s__ | round }}</span> $ kJ/kg $</li>
-            <li>工作轮等熵比焓降 $ h_{2s} = i_1 - i_{2s}'' = $ <span>{{ h_2s | round }}</span> $ kJ/kg $</li>
+            <li>工作轮进口冲击损失 $ q_{w_{1u}} = \frac {w_{1u}^2} {2} = $ <span>{{ q_w_u1 | round }}</span> $ J/kg $，可忽略不计。</li>
+            <li>工作轮进口比焓 $ i_1' = i_1 + q_{w_{1u}} = $ <span>{{ i_1_ | round }}</span> $ J/kg $，由于冲击损失很像，工作轮进口状态可以认为与喷嘴出口状态相同。</li>
+            <li>由 $ p_1, i_1 $ 及 $ p_3 $ 从 i-s 图可查得工作轮出口等熵比焓 $ i_{2s}'' = $ <span>{{ i_2s__ | round }}</span> $ J/kg $</li>
+            <li>工作轮等熵比焓降 $ h_{2s} = i_1 - i_{2s}'' = $ <span>{{ h_2s | round }}</span> $ J/kg $</li>
             <li>不考虑内部损失时，工作轮出口理想相对速度 $ w_{2s} = \sqrt {2 h_{2s} + w_{1 \tau}^2 + u_{2m}^2 - u_1^2} = $ <span>{{ w_2s | round }}</span> $ m/s $</li>
             <li>实际相对速度 $ w_2 = \psi w_{2s} = $ <span>{{ w_2 | round }}</span> $ m/s $</li>
-            <li>工作轮中的能量损失 $ q_r = \frac{1}{2} (w_{2s}^2 - w_2^2) = $ <span>{{ q_r | round }}</span> $ kJ/kg $<br>
+            <li>工作轮中的能量损失 $ q_r = \frac{1}{2} (w_{2s}^2 - w_2^2) = $ <span>{{ q_r | round }}</span> $ J/kg $<br>
                 $ \xi_r = \frac {q_r} {h_s'} = $ <span>{{ xi_r | round }}</span></li>
-            <li>工作轮出口实际比焓 $ i_2 = i_{2s}'' + q_r = $ <span>{{ i_2 | round }}</span> $ kJ/kg $</li>
+            <li>工作轮出口实际比焓 $ i_2 = i_{2s}'' + q_r = $ <span>{{ i_2 | round }}</span> $ J/kg $</li>
             <li>工作轮出口实际温度 $ T_2 = $ <span>{{ T_2 | round }}</span> $ K $</li>
             <li>由 $ p_3、T_2 $ 从 Z-p 图中可查得 $ Z_2 = $ <span>{{ Z_2 | round }}</span> $ $</li>
             <li>工作轮出口实际气体密度 $ \rho_2 = \frac {p_3} {Z_2 R_g T_2} = $ <span>{{ rho_2 | round }}</span> $ kg/m^3 $</li>
@@ -127,7 +128,7 @@
                 $ \alpha_2 = $ <span>{{ alpha_2 | round }}</span> $ ^{\circ} $
             </li>
             <li>工作轮出口气流绝对速度 $ c_2 = w_2 \sin {\beta_2} = $ <span>{{ c_2 | round }}</span> $ m/s $</li>
-            <li>余速损失 $ q_K = \frac {c_2^2} {2} = $ <span>{{ q_K | round }}</span> $ kJ/kg $, $ \xi_K = \frac {q_K} {h_s'} = $ <span>{{ xi_K | round }}</span></li>
+            <li>余速损失 $ q_K = \frac {c_2^2} {2} = $ <span>{{ q_K | round }}</span> $ J/kg $, $ \xi_K = \frac {q_K} {h_s'} = $ <span>{{ xi_K | round }}</span></li>
             <li>流道效率 $ \eta_u = 1 - \xi_N - \xi_r - \xi_K = $ <span>{{ eta_u | round }}</span></li>
         </ol>
         <h3>喷嘴与工作轮基本尺寸的确定</h3>
@@ -158,7 +159,7 @@
             <li>进出口叶片平均高度 $ l_m = \frac {l_1 + l_2} {2} = $ <span>{{ l_m | m_to_mm | round }}</span> $ mm $</li>
             <li>轴向间隙比 $ \frac {\delta} {l_m} = $ <span>{{ delta_l_m | round }}</span>，与原取值相差不多，这里取轴向间隙 $ \delta = 0.4 mm $</li>
             <li>工作轮子午面扩散角<br>
-                $ \theta = \arctan {\frac {2 (l_2 - l_1)} {D_1 - D_{2m}}} = $ <span>{{ theta | round }}</span> $ ^\circ $
+                $ \theta = \arctan {\frac {2 (l_2 - l_1)} {D_1 - D_{2m}}} = $ <span>{{ theta | rad_to_deg | round }}</span> $ ^\circ $
             </li>
         </ol>
         <h3>内部损失计算</h3>

@@ -3,12 +3,12 @@ function textToCollection(text) {
     let items = line.split('	');
     return {
       T: parseFloat(items[0]),
-      p: parseFloat(items[1]),
+      p: parseFloat(items[1]) * 1e6,
       rho: parseFloat(items[2]),
-      i: parseFloat(items[3]),
-      s: parseFloat(items[4]),
+      i: parseFloat(items[3]) * 1e3,
+      s: parseFloat(items[4]) * 1e3,
       Z: parseFloat(items[5]),
-      eta: items.length >= 6 ? parseFloat(items[6]) : 0, // Viscosity
+      eta: items.length >= 6 ? parseFloat(items[6]) : 0 // Viscosity
     };
   });
 }
