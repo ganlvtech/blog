@@ -20,3 +20,7 @@ tags:
 ![zh wikipedia use www ssl tunnel](/images/2018-09-22-great-firewall-ssl-connection/3.jpg)
 
 也就是说，假如能和对方成功建立起 SSL 连接，那么这种检测证书的方式就会被绕过。
+
+On 23 April 2019, all versions of Wikipedia were blocked in China. []
+
+So you must change hosts to resolve `zh.wikipedia.org` to the same ip with `www.wikimedia.org`. Visit <https://www.wikimedia.org/> first to establish SSL connection with remote server. Then visit whatever you want.
