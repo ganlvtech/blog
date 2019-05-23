@@ -21,6 +21,6 @@ tags:
 
 也就是说，假如能和对方成功建立起 SSL 连接，那么这种检测证书的方式就会被绕过。
 
-On 23 April 2019, all versions of Wikipedia were blocked in China. []
+On 23 April 2019, all versions of Wikipedia were blocked in China. [Reference](https://en.wikipedia.org/wiki/Censorship_of_Wikipedia#cite_ref-cn2019apr_3-1)
 
 So you must change hosts to resolve `zh.wikipedia.org` to the same ip with `www.wikimedia.org`. Visit <https://www.wikimedia.org/> first to establish SSL connection with remote server. Then visit whatever you want.
