@@ -211,19 +211,19 @@ var vm = new Vue({
       return calcBypi(this.p_2, this.i_2).Z;
     },
     rho_2() {
-      return this.p_2/ (this.Z_2 * this.R_g * this.T_2);
+      return this.p_2 / (this.Z_2 * this.R_g * this.T_2);
     },
     tan_alpha_2() {
       return Math.sin(this.beta_2_) / (Math.cos(this.beta_2_) - this.u_2m / this.w_2);
     },
     alpha_2() {
-      return Math.atan(this.tan_alpha_2) ;
+      return Math.atan(this.tan_alpha_2);
     },
     c_2() {
       return this.w_2 * Math.sin(this.beta_2_) / Math.sin(this.alpha_2);
     },
     q_K() {
-      return Math.pow(this.c_2, 2) / 2 ;
+      return Math.pow(this.c_2, 2) / 2;
     },
     xi_K() {
       return this.q_K / this.h_s_;
@@ -292,7 +292,7 @@ var vm = new Vue({
       return this.delta_ / this.l_m;
     },
     theta() {
-      return Math.atan(2 * (this.l_2 - this.l_1) / (this.D_1 - this.D_2m)) ;
+      return Math.atan(2 * (this.l_2 - this.l_1) / (this.D_1 - this.D_2m));
     },
     eta_1() {
       return calcBypT(this.p_1, this.T_1).eta;
@@ -316,7 +316,7 @@ var vm = new Vue({
       return this.P_B / this.q_m;
     },
     xi_B() {
-      return this.q_B / (this.h_s_ );
+      return this.q_B / (this.h_s_);
     },
     xi_l() {
       return 1.3 * this.delta_l_m * (this.eta_u - this.xi_B);
@@ -338,6 +338,97 @@ var vm = new Vue({
     },
     T_4() {
       return this.T_2_;
+    },
+    Z_2_() {
+      return this.Z_2;
+    },
+    c_3_estimate() {
+      return 7.5;
+    },
+    n_1_n_estimate() {
+      return Math.log((Math.pow(this.c_2, 2) - Math.pow(this.c_3_estimate, 2)) /
+        (2 * this.kappa / (this.kappa - 1) * this.Z_2_ * this.R_g * this.T_2_) + 1) / Math.log(this.p_2_p_3);
+    },
+    eta_K_raw() {
+      return (this.kappa - 1) / this.kappa / this.n_1_n_estimate;
+    },
+    eta_K() {
+      return Math.round(this.eta_K_raw * 100) / 100;
+    },
+    n_1_n() {
+      return 1 / this.eta_K * (this.kappa - 1) / this.kappa;
+    },
+    n_() {
+      return 1 / (1 - this.n_1_n);
+    },
+    c_3_() {
+      return Math.sqrt(Math.pow(this.c_2, 2) - 2 * this.kappa / (this.kappa - 1) * this.Z_2_ * this.R_g * this.T_2_ * (Math.pow(this.p_2_p_3, this.n_1_n) - 1));
+    },
+    rho_3_() {
+      return Math.pow(this.p_2 / this.p_3, 1 / this.n_) * this.rho_2;
+    },
+    rho_5() {
+      return this.rho_3_;
+    },
+    T_3_() {
+      return Math.pow(this.p_2 / this.p_3, (this.n_ - 1) / this.n_) * this.T_2_;
+    },
+    T_5() {
+      return this.T_3_;
+    },
+    i_3_() {
+      return calcBypT(this.p_2, this.T_3_).i;
+    },
+    i_5() {
+      return this.i_3_;
+    },
+    rho_2_() {
+      return this.p_3 / (this.Z_2_ * this.R_g * this.T_2_);
+    },
+    i_5_verify() {
+      return this.i_2 + this.q_B + this.q_K + this.q_l;
+    },
+    D_K() {
+      return this.D_2_;
+    },
+    d() {
+      return this.D_2__;
+    },
+    D_3() {
+      return Math.sqrt(4 * this.q_m / (Math.PI * this.c_3_ * Math.sin(this.alpha_2) * this.rho_3_));
+    },
+    alpha_K() {
+      return 8 / 180 * Math.PI;
+    },
+    L() {
+      return (this.D_3 - this.D_K) / (2 * Math.tan(this.alpha_K));
+    },
+    eta_s() {
+      return (this.i_0 - this.i_5) / (this.i_0 - this.i_2s);
+    },
+    Q_0() {
+      return this.eta_s * this.h_s * this.q_m;
+    },
+    P_T() {
+      return this.eta_s * 0.96 * this.h_s * this.q_m;
+    },
+    n_rotation() {
+      return 60 * this.u_1 / (Math.PI * this.D_1);
+    },
+    t_N() {
+      return Math.PI * this.D_N / this.Z_N;
+    },
+    l_N_() {
+      return 0.6;
+    },
+    b() {
+      return this.t_N / this.l_N_;
+    },
+    R_N() {
+      return this.D_N / 2;
+    },
+    D_0() {
+      return 0;
     }
   }
 });

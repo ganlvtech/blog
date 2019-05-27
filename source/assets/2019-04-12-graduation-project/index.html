@@ -41,9 +41,9 @@
         </ul>
         <h4>选定</h4>
         <ul>
-            <li>喷嘴出口叶片角 $ \alpha_1' $ <input type="text" name="alpha_1_" v-model="alpha_1_"> $ ^{\circ} $</li>
-            <li>工作轮进口叶片角 $ \beta_1' $ <input type="text" name="beta_1_" v-model="beta_1_"> $ ^{\circ} $</li>
-            <li>工作轮出口叶片角 $ \beta_2' $ <input type="text" name="beta_2_" v-model="beta_2_"> $ ^{\circ} $</li>
+            <li>喷嘴出口叶片角 $ \alpha_1' $ <input type="text" name="alpha_1_" v-model="alpha_1__deg"> $ ^{\circ} $</li>
+            <li>工作轮进口叶片角 $ \beta_1' $ <input type="text" name="beta_1_" v-model="beta_1__deg"> $ ^{\circ} $</li>
+            <li>工作轮出口叶片角 $ \beta_2' $ <input type="text" name="beta_2_" v-model="beta_2__deg"> $ ^{\circ} $</li>
         </ul>
         <h4>选取</h4>
         <ul>
@@ -125,9 +125,9 @@
             <li>由 $ p_3、T_2 $ 从 Z-p 图中可查得 $ Z_2 = $ <span>{{ Z_2 | round }}</span> $ $</li>
             <li>工作轮出口实际气体密度 $ \rho_2 = \frac {p_3} {Z_2 R_g T_2} = $ <span>{{ rho_2 | round }}</span> $ kg/m^3 $</li>
             <li>工作轮出口气流的绝对速度方向 $ \tan {\alpha_2} = \frac {\sin {\beta_2}} {\cos {\beta_2} - \frac {u_2} {w_2}} = $ <span>{{ tan_alpha_2 | round }}</span><br>
-                $ \alpha_2 = $ <span>{{ alpha_2 | round }}</span> $ ^{\circ} $
+                $ \alpha_2 = $ <span>{{ alpha_2 | rad_to_deg | round }}</span> $ ^{\circ} $
             </li>
-            <li>工作轮出口气流绝对速度 $ c_2 = w_2 \sin {\beta_2} = $ <span>{{ c_2 | round }}</span> $ m/s $</li>
+            <li>工作轮出口气流绝对速度 $ c_2 = \frac{w_2 \sin {\beta_2}} {\sin {\alpha_2}} = $ <span>{{ c_2 | round }}</span> $ m/s $</li>
             <li>余速损失 $ q_K = \frac {c_2^2} {2} = $ <span>{{ q_K | round }}</span> $ J/kg $, $ \xi_K = \frac {q_K} {h_s'} = $ <span>{{ xi_K | round }}</span></li>
             <li>流道效率 $ \eta_u = 1 - \xi_N - \xi_r - \xi_K = $ <span>{{ eta_u | round }}</span></li>
         </ol>
@@ -194,6 +194,72 @@
                 $ i_2' = i_4 = i_2 + q_B + q_l = $ <span>{{ i_2_ | round }}</span> $ J/kg $
             </li>
             <li>进入扩压器时气体由 $ p_3, i_2' $ 可查得 $ T_2' = T_4 = $ <span>{{ T_2_ | round }}</span> $ K $</li>
+        </ol>
+        <h3>扩压器中的流动</h3>
+        <ol>
+            <li>扩压后气体流速<br>
+                $ c_3' = \sqrt {c_2^2 - \frac {2 \kappa} {\kappa - 1} Z_2' R_g T_2' \left [(\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} - 1 \right ] } = $ <span>{{ c_3_ | round }}</span> $ m/s $<br>
+                符合一般的要求范围 $ c_s' = 5 \sim 10 m/s $，这里估取 $ \eta_K = $ <span>{{ eta_K | round }}</span><br>
+                因此<br>
+                $ \frac {n - 1} {n} = \frac {1} {\eta \kappa} \frac {\kappa - 1} {\kappa} = $ <span>{{ n_1_n | round }}</span> $ , n = $ <span>{{ n_ | round }}</span><br>
+            </li>
+            <li>扩压器出口气体密度<br>
+                $ \rho_3' = \rho_5 = (\frac {p_2} {p_3})^{\frac {1} {n}} \rho_2 = $ <span>{{ rho_3_ | round }}</span> $ kg/m^3 $
+            </li>
+            <li>扩压器出口温度<br>
+                $ T_3' = T_5 = (\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} T_2' = $ <span>{{ T_3_ | round }}</span> $ K $
+            </li>
+            <li>由 $ p_2, T_3' $ 从 i-s 图可得扩压器出口实际比焓 $ i_3' = i_5 = $ <span>{{ i_3_ | round }}</span> $ J/kg $</li>
+            <li>扩压器进口气体密度<br>
+                $ \rho_2' = \frac {p_3} {Z_2' R_g T_2'} = $ <span>{{ rho_2_ | round }}</span> $ kg/m^3 $
+            </li>
+            <li>扩压器出口比焓校核<br>
+                $ i_5 = i_2 + q_B + q_K + q_l = $ <span>{{ i_5_verify | round }}</span> $ J/kg $
+            </li>
+            <li>扩压器进口直径<br>
+                为了使从工作轮排除的气流平滑过渡到扩压器，一般使扩压器进口直径等于工作轮出口外径，即<br>
+                $ D_K = D_2' = $ <span>{{ D_K | m_to_mm | round }}</span> $ mm $
+            </li>
+            <li>导流螺帽直径<br>
+                为了使工作轮排除的气流不至于突然减速，一般都在工作轮端假装导流螺帽，其直径等于工作轮出口内经，即<br>
+                $ d = D_2'' = $ <span>{{ d | m_to_mm | round }}</span> $ mm $
+            </li>
+            <li>扩压器出口直径<br>
+                $ D_3 = \sqrt {\frac {4 q_m} {\pi c_3' \sin {\alpha_2} \rho_3'}} = $ <span>{{ D_3 | m_to_mm | round }}</span> $ mm $
+            </li>
+            <li>扩压器长度<br>
+                $ L = \frac {D_3 - D_K} {2 \tan {\alpha_K}} = $ <span>{{ L | m_to_mm | round }}</span> $ mm $
+            </li>
+        </ol>
+        <h3>效率、制冷量、功率和转速</h3>
+        <ol>
+            <li>等熵效率<br>
+                $ \eta_s = \frac {i_0 - i_5} {i_0 - i_{2s}} = $ <span>{{ eta_s | round }}</span>
+            </li>
+            <li>制冷量<br>
+                $ Q_0 = \eta_s h_s q_m = $ <span>{{ Q_0 | round }}</span> $ W $
+            </li>
+            <li>轴功率<br>
+                $ P_T = \eta_e h_s q_m = $ <span>{{ P_T | round }}</span> $ W $
+            </li>
+            <li>转速<br>
+                $ n = \frac {60 u_1} {\pi D_1} = $ <span>{{ n_rotation | round }}</span> $ r/min $
+                上述计算所得的速度三角形及 i-s 图见图 TODO 与图 TODO，计算结果列与表 TODO 中的第 TODO 栏数据中。可以看出，表中后三栏的数据基本上是一致的，但是由于采用了扩压器，透平膨胀机实际的等熵效率提高了。
+            </li>
+        </ol>
+        <h2>流道几何形状的确定</h2>
+        <h3>喷嘴叶片型线的选定及叶片的配置</h3>
+        <ol>
+            <li>选用 TC-2P 型径向叶型</li>
+            <li>选用相对跨距 $ l_N = 0.60 $，这时喷嘴叶片出口跨距<br>
+                $ t_N = \frac {\pi D_N} {Z_N} = $ <span>{{ t_N | m_to_mm | round }}</span> $ mm $$ 弦长 $$ b = \frac {t_N} {l_N} = $ <span>{{ b | m_to_mm | round }}</span> $ mm $
+            </li>
+            <li>根据 TC-2P 叶型的试验数据，当 $ l_N = 0.60 $ 时，为了保证出口角 $ \alpha_1' = 16^\circ $，要求叶片安装角 $ \alpha_{1A} = 33^\circ $</li>
+            <li>喷嘴叶片外径<br>
+                $ D_0 \approx 2 \sqrt {R_N^2 + (ab)^2 + 2 a b \sin {\alpha_{1A}} R_N} = mm $
+            </li>
+            <li>由所得的 $ b $ 值按所选叶型的相对坐标作出叶型图形，由所得叶型图及安装角 $ \alpha_{1A} $ 可以配置喷嘴叶片如图 TODO 所示。这时以叶尖出口点 A 为圆心，以计算所得的喷嘴喉部宽度 $ b_N $为半径，所做圆弧应与叶型图背弧线相切。否则应重新修正 $ l_N $ 值。</li>
+            考虑到从蜗壳到喷嘴叶片的过渡，去喷嘴环的直径 $ D_0' = mm $</li>
         </ol>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
