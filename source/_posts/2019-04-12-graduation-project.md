@@ -10,23 +10,45 @@ tags:
   - expander
 ---
 
-> 这是我的本科生毕业设计论文
+> [Tips]
+>
+> 这是我的本科生毕业设计。
+>
+> 本文讨论的是工程类问题，但由于条件有限，所设计的任何成果均未经过验证，我不能保证其正确性。
+>
+> 你可以非商用地引用本文任何片段和计算程序，无需注明出处。请勿商业使用。
 
 <!-- toc -->
 
 ## 摘要
 
-本文针对小型低温透平膨胀机的实际过程编写了一套自动计算程序，对设计温度区间、压力区间可以实现输入进出口压力温度，自动进行一维热力计算。随后根据热力计算数据，设计膨胀机叶轮。
+在制冷和低温工程技术领域，透平膨胀机是极为重要的技术装备。它作为空分设备的核心部件，透平叶轮的设计关乎到整套设备的等熵效率以及制冷量。虽然近些年来数值模拟技术逐渐成熟，叶轮设计的方法逐渐引入了三维空间模拟技术，但传统透平膨胀机的一维设计依然具有重要的比重。本文使用一维设计方法设计透平膨胀机，在继承了传统透平膨胀机的一维设计理论的前提下，本文总结并编写出了一套自动热力计算程序，输入给定要求之后，程序会自动给出完整的计算过程和结果，随后直接根据这些热力计算结果、叶型数据、直接导入三维建模软件生成叶轮型线，极大提高工作效率，减少劳动强度。本文主要工作如下：
 
-TODO
+1. 本文针对小型低温透平膨胀机的一维设计理论，编写了一套自动计算程序，可以对设计温度区间、压力区间可以实现输入进、出口压力温度，立刻自动进行一维热力计算，并完整呈现每一步的步骤和结果。程序预先编制了待计算区间的物性表，采用线性插值的方法估计压力、温度、密度、焓、熵、压缩因子，可以实现在百分之一以内的误差。
 
-## 关键词
+2. 随后根据热力计算数据，设计膨胀机叶轮，给出三维叶轮设计结果。
+
+### 关键词
 
 小型低温透平、一维热力计算、透平膨胀机、等熵膨胀、参数设计
+
+## ABSTRACT
+
+In the field of refrigeration and cryogenic engineering, turboexpanders are extremely important technical equipment. It is the core component of air separation equipment, and the design of the turbine is related to the isentropic efficiency and cooling capacity of the complete equipment. Although the numerical simulation technology has gradually improved in recent years, and the three-dimensional simulation technology are introduced to turbine designing, the one-dimensional design of the traditional turbo expander still has an important proportion. In this paper, the one-dimensional design method is used to design the turboexpander. Inherited the traditional one-dimensional design theory of the turboexpander, this paper summarizes and developed an automatic thermal calculation program. After inputting the given requirements, the program will complete the calculation process and display results automatically, and then the turbine profile can be generated based on these thermodynamic calculation results, turbine data, and directly import to 3D modeling software, which greatly improves working efficiency and reduces labor difficulty. The main work of this paper is as follows:
+
+1. This paper has written an automatic calculation program for the one-dimensional design theory of small-scale low-temperature turboexpander. It can analyse the input and outlet pressure temperature for the design temperature interval and pressure interval, and automatically perform one-dimensional thermal calculation immediately. Completely show the calculation method and results of each step. There are preset physical property table of the specific interval to be  calculated, and uses linear interpolation method to estimate the pressure, temperature, density, enthalpy, entropy and compression factor, which can achieve the error within one percent.
+
+2. Based on the thermal calculation data, the expander turbine is designed. Three-dimensional turbine design result is presented.
+
+### KEYWORDS
+
+Turbine for cryogenic; 1-d thermal design; Turboexpander; Isentropic expansion; Parameter design
 
 ## 绪论
 
 ### 课题研究背景及意义
+
+绝热等熵膨胀是获得低温的重要途径之一，也是利用压差对外做功的一个重要的热力过程。对于这一重要的过程中，透平膨胀机是实现近似绝热等熵膨胀的一种高效的流体机械。目前，从民用的大型空调到低温科学中的低温风洞、空气分离、极低温氢、氦液化，透平膨胀机都是必不可少的核心装备。
 
 ### 膨胀机简介
 
@@ -54,7 +76,13 @@ TODO
 
 ### 国内现状
 
-TODO
+在我国建国以后，随着经济的发展，由于国家和市场的需求，透平膨胀机在低温装置中得到了广泛的应用。
+
+1957 年首先在飞机空调装置中采用了向心径向冲动式透平膨胀机；1958 年又在高低压流程的 3350 空气分离装置中采用向心径流冲动式透平膨胀机。从 1960 年以后，我国有自行设计和试验了低压空分装置用的向心径流反动式透平膨胀机。1966 年以后，相机设计和制造了标态产氧量从 600 到 30000 m³/h 的各类全低压空分装置使用的低压空气透平膨胀机；标态产氧量为 150 和 300 m³/h 的中压空分装置用的中压空气透平膨胀机。在这同时，还发展了各种其他用途的透平膨胀机。其中有标态进气量达 180000 m³/h 的高空环境模拟装置用透平膨胀机，也有温度低达 15 K 的宇宙环境模拟装置用的氦气透平膨胀机，转速达 120000 r/min 的高能物理用大型氦气透平膨胀机，还有用于氢、天然气的液化以及回收能量的氢、天然气、油田气、化工为期、烟气、高炉气等透平膨胀机。此外还有低比焓降的空分-氮洗联合流程用大气量、低转速的透平膨胀机和高比焓降的中压氮液化装置用分两级膨胀的中压膨胀机。
+
+为配合低温装置发展的需要，有关单位也开展了一系列的试验研究工作。在制造工艺方面，也先后试验成功了工作轮的精密浇铸成型、笔试工作轮的轮盖钎接工艺、工作轮的电火花加工成型、气体轴承的挤压成型等新工艺。
+
+当然，我国的透平膨胀机技术与国际先进水平仍具有一定差距。随着科学技术的现代化，这些差距将会缩小，甚至赶超。
 
 ### 透平膨胀机
 
@@ -152,9 +180,15 @@ a) 压缩机   b) 膨胀机
 
 首先，最简单的方法就是直接把高低压相连，把高压气体直接通向低压大空间中，如果流量不满足要求的话，就调整管子的直径，总有一个合适的通流面积能满足这个要求。这种方案是肯定能满足给定要求的，但是其中存在诸多问题。第一个问题，直接连通高低压，中间的管子进口处高压向低压流动，流速也是增加的，顺压力梯度流动，这部分没有任何问题。但是出口处从管道向大空间流动，此时会产生大量的涡，浪费大量的能量，同时也会产生巨大的噪音。第二个问题，这个高压到低压的过程是蕴含大量的机械能（压差势能）的，这部分能量直接浪费掉是非常不经济的，同时也不符合节能环保的理念。第二个问题，也是最重要的方面，通常使用膨胀机的目的都是获得冷量，如果直接这样连通进出口，的确气体会有膨胀做功，但是相比以轴功率形式输出功，以机械做功的方式消耗气体的内能，这种直接膨胀获得的冷量简直太少了。这种直接的膨胀过程是压差转化为气体流速，快速流动的气体又通过摩擦的方式回到较低流速，相当于几乎完全浪费了这部分压差势能。综上所述，这种方案只是给我们一种思路，它仅仅只是一种假想的简单过程，我们必须对其加以改进。
 
-改进的目标就是回收部分机械能。最的回收压差势能的方式就是简单的活塞机构。活塞吸气时，进气门打开，排气门关闭，从高压端吸气。当吸入一定量气体时（取决于进出口压力比），关闭进气门，活塞剩余的冲程为自由膨胀，由于气缸内是高压气体，气缸背压是低压端，此过程自发进行，向低压端膨胀，同时通过曲柄连杆机构对外做功。当活塞达到下止点时，按照之前的设计，此时气缸内的压力应该等于低压端压力，这时排气门打开，然后曲柄转回，带动活塞，向低压端近乎等压排气。在这样的设计下，理想情况下，气体近似做等熵膨胀，可以回收大量的功。我们可以利用这部分机械能做一些额外的事情，例如发电，或者对进口气体进行涡轮增压。并且，因为一部分内能转化为了机械功对外输出，这样更有利于产生冷量。
+![高低压直接相连](/images/2019-04-12-graduation-project/connect-directly.svg)
+
+改进的目标就是回收部分机械能。最简单的回收压差势能的方式就是简单的活塞机构。活塞吸气时，进气门打开，排气门关闭，从高压端吸气。当吸入一定量气体时（取决于进出口压力比），关闭进气门，活塞剩余的冲程为自由膨胀，由于气缸内是高压气体，气缸背压是低压端，此过程自发进行，向低压端膨胀，同时通过曲柄连杆机构对外做功。当活塞达到下止点时，按照之前的设计，此时气缸内的压力应该等于低压端压力，这时排气门打开，然后曲柄转回，带动活塞，向低压端近乎等压排气。在这样的设计下，理想情况下，气体近似做等熵膨胀，可以回收大量的功。我们可以利用这部分机械能做一些额外的事情，例如发电，或者对进口气体进行涡轮增压。并且，因为一部分内能转化为了机械功对外输出，这样更有利于产生冷量。
+
+![通过活塞膨胀机相连](/images/2019-04-12-graduation-project/connect-with-piston.svg)
 
 既然活塞膨胀机可行，那么透平膨胀机应该也可行，并且透平膨胀机的很多地方要优于活塞式膨胀机。活塞膨胀机需要往复运动，噪音较大，而且工作不连续，易造成进、出口压力不稳定，压力波动容易给前后连接的器件带来一些周期性的损耗，加快设备老化。透平膨胀机通流能力大，易于小型化，连续工作，噪音相比之下较小。但透平膨胀机设计较为复杂，对实际工况要求较高，必须在设计工况附近工作。其实这个改进的目标也是我们使用透平膨胀机的目的，通常在低温工程应用中，使用透平膨胀机进行近似等熵膨胀，以达到较大的焓降，进而实现获取低温的目标工质气体。
+
+![通过透平膨胀机相连](/images/2019-04-12-graduation-project/connect-with-turbine.svg)
 
 本文的主要内容就是在符合题目要求条件之下，尽可能保证较大的焓降，尽可能提高等熵效率。
 
@@ -206,8 +240,8 @@ a) 压缩机   b) 膨胀机
 
 #### 有关参数的估取
 
-1. 喷口出口角 $ \alpha_1 = 16^{\circ} $；
-2. 工作轮出口角 $ \beta_2 = 30^{\circ}15' $；
+1. 喷口出口角 $ \alpha_1 = 16^\circ $；
+2. 工作轮出口角 $ \beta_2 = 30^\circ 15' $；
 3. 喷嘴中的速度系数 $ \phi = 0.96 $；
 4. 工作轮中的速度系数 $ \psi = 0.84 $；
 5. 工作轮叶高轮径比 $ l_1 / D_1 = 0.04 $；
@@ -232,9 +266,9 @@ a) 压缩机   b) 膨胀机
 * $ \psi^2 = 0.84^2 = 0.7056 $
 * $ \phi^2 = 0.96^2 = 0.9216 $
 * $ 1 - \phi^2 = 1 - 0.9216 = 0.0784 $
-* $ \cos \beta_2 = \cos 30^{\circ}15' = 0.8638 $
+* $ \cos \beta_2 = \cos 30^\circ 15' = 0.8638 $
 * $ \cos^2 \beta_2 = 0.8638^2 = 0.7462 $
-* $ \cos \alpha_1 = \cos 16^{\circ} = 0.9613 $
+* $ \cos \alpha_1 = \cos 16^\circ = 0.9613 $
 * $ \cos^2 \alpha_1 = 0.9613^2 = 0.9240 $
 * $ (1 - \phi^2) \times (1 - \cos^2 \beta_2\psi^2) = 0.0784 \times (1 - 0.7462 \times 0.7056) = 0.03712 $
 * $ \cos^2 \alpha_1\phi^2 = 0.9240 \times 0.9216 = 0.8516 $
@@ -266,14 +300,14 @@ a) 压缩机   b) 膨胀机
 * 工作轮叶高轮径比 $ l_1 / D_1 = 0.04 $
 * 工作轮相对轴向间隙 $ \delta / l_m = 0.017 $
 * 喷嘴出口减窄系数 $ \tau_N = 0.98 $
-* 工作轮进口减窄系数 $ \tau_2 = 0.965 $
+* 工作轮进口减窄系数 $ \tau_1 = 0.965 $
 * 工作轮出口减窄系数 $ \tau_2 = 0.775 $
 
 ##### 选定
 
-* 喷嘴出口叶片角 $ \alpha_1' = 16^{\circ} $
-* 工作轮进口叶片角 $ \beta_1' = 90^{\circ} $
-* 工作轮出口叶片角 $ \beta_2' = 30^{\circ}15' $
+* 喷嘴出口叶片角 $ \alpha_1' = 16^\circ $
+* 工作轮进口叶片角 $ \beta_1' = 90^\circ $
+* 工作轮出口叶片角 $ \beta_2' = 30^\circ15' $
 
 ##### 选取
 
@@ -325,11 +359,11 @@ $ p_2 / p_3 = 1.04 $，因而 $ p_3 = p_2 / 1.04 = 0.11 MPa / 1.04 = 0.10577 MPa
 
     $ \sin (\alpha_1' + \delta) = 1.00465 \sin (\alpha_1') = 0.27692 $
 
-    $ \alpha_1 = \alpha_1' + \delta = $
+    $ \alpha_1 = \alpha_1' + \delta = 16.076 ^\circ $
 
-    $ \delta = 0.07649 ^{\circ} = 4.58973 ' $
+    $ \delta = 0.07649 ^\circ = 4.58973 ' $
 
-    一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ}  $
+    一般希望 $ \delta &lt; 2^\circ \sim 3^\circ  $
 
 15. 喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = 205.202 m/s $
 
@@ -369,7 +403,7 @@ i-s、Z-p 表
 
     $$ \tan {\beta_1} = \frac {\sin {\alpha_1}} {\cos {\alpha_1} - \frac {u_1} {c_1}} = -180.84 $$
 
-    $$ \beta_1 = 180 ^{\circ} - 89.628 ^{\circ} = 90.317 ^{\circ} $$
+    $$ \beta_1 = 180 ^\circ - 89.628 ^\circ = 90.317 ^\circ $$
 
 4. 进工作轮相对速度 $$ w_1 = \frac {c_1 \sin {\alpha_1}} {\sin {\beta_1}} = 56.037 m/s $$
 
@@ -397,7 +431,7 @@ i-s、Z-p 表
 
 15. 工作轮出口实际比焓 $$ i_2 = i_{2s}'' + q_r = 84.902 kJ/kg $$
 
-16. 工作轮出口实际温度 $$ T_2 = 87.602 K $$
+16. 由 $ p_2, i_2 $ 从 i-s 图可查得，工作轮出口实际温度 $$ T_2 = 87.602 K $$
 
 17. 由 $ p_3、T_2 $ 从 Z-p 图中可查得 $$ Z_2 = 0.96540 $$
 
@@ -405,7 +439,7 @@ i-s、Z-p 表
 
 19. 工作轮出口气流的绝对速度方向 $$ \tan {\alpha_2} = \frac {\sin {\beta_2}} {\cos {\beta_2} - \frac {u_2} {w_2}} = 47.215 $$
 
-    $$ \alpha_2 = 88.787 ^{\circ} $$
+    $$ \alpha_2 = 88.787 ^\circ $$
 
 20. 工作轮出口气流绝对速度 $$ c_2 = \frac{w_2 \sin {\beta_2}} {\sin {\alpha_2}} = 57.494 m/s $$
 

@@ -121,7 +121,7 @@
             <li>工作轮中的能量损失 $ q_r = \frac{1}{2} (w_{2s}^2 - w_2^2) = $ <span>{{ q_r | round }}</span> $ J/kg $<br>
                 $ \xi_r = \frac {q_r} {h_s'} = $ <span>{{ xi_r | round }}</span></li>
             <li>工作轮出口实际比焓 $ i_2 = i_{2s}'' + q_r = $ <span>{{ i_2 | round }}</span> $ J/kg $</li>
-            <li>工作轮出口实际温度 $ T_2 = $ <span>{{ T_2 | round }}</span> $ K $</li>
+            <li>由 $ p_2, i_2 $ 从 i-s 图可查得，工作轮出口实际温度 $ T_2 = $ <span>{{ T_2 | round }}</span> $ K $</li>
             <li>由 $ p_3、T_2 $ 从 Z-p 图中可查得 $ Z_2 = $ <span>{{ Z_2 | round }}</span> $ $</li>
             <li>工作轮出口实际气体密度 $ \rho_2 = \frac {p_3} {Z_2 R_g T_2} = $ <span>{{ rho_2 | round }}</span> $ kg/m^3 $</li>
             <li>工作轮出口气流的绝对速度方向 $ \tan {\alpha_2} = \frac {\sin {\beta_2}} {\cos {\beta_2} - \frac {u_2} {w_2}} = $ <span>{{ tan_alpha_2 | round }}</span><br>
