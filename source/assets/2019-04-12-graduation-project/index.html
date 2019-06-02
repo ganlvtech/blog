@@ -134,7 +134,7 @@
         <h3>喷嘴与工作轮基本尺寸的确定</h3>
         <ol>
             <li>工作轮直径 $ D_1 = \sqrt {\frac {q_m} {\pi (\frac {l_1} {D_1}) w_1 \sin {\beta_1} \rho_1 \tau_1}} = $ <span>{{ D_1_raw | round }}</span> $ m $<br>
-                圆整后取 $ D_1 = $ <span>{{ D_1 | m_to_mm | round }}</span> $ mm $ 这时 $ \frac {l_1} {D_1} = $ <span>{{ l_1_D_1_round | round }}</span></li>
+                圆整后取 $ D_1 = $ <span>{{ D_1 | m_to_mm | round }}</span> $ mm $ 这时 $ \frac {l_1} {D_1} = \frac {q_m} {\pi D_1^2 w_1 \sin {\beta_1} \rho_1 \tau_1} = $ <span>{{ l_1_D_1_round | round }}</span></li>
             <li>喷嘴出口直径 $ D_N = D_1 + 2 \Delta_1 = mm $，这里按固定叶片设计，因此取喷嘴与工作轮之间的径向间隙较小。如果采用转动喷嘴叶片调节，就必须加大间隙，由调节要求确定。</li>
             <li>喷嘴数 $ Z_N $ 在固定叶片中可按图 4-13 选取，这里选取 $ Z_N = $ <span>{{ Z_N }}</span>；如果采用大叶片，则可在 $ 8 \sim 12 $ 之间选用</li>
             <li>喷嘴喉部宽度<br>
