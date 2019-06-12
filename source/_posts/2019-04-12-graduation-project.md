@@ -14,9 +14,9 @@ tags:
 >
 > 这是我的本科生毕业设计。
 >
-> 本文讨论的是工程类问题，但由于条件有限，所设计的任何成果均未经过验证，我不能保证其正确性。
+> 您可以非商用地引用本文任何文字片段、图、表和计算程序，无需注明出处。请勿商业使用。
 >
-> 你可以非商用地引用本文任何片段和计算程序，无需注明出处。请勿商业使用。
+> 本文是工程类问题，虽然设计过程均参照参考书上的设计过程，但由于条件有限，所设计的任何成果均未经过验证，我不能保证实际工作效率达到标准、不能保证其任何数据的有效性。如果您参考本文的话，我不为文中任何的错误对您造成的损失负责，您有任何修改意见也可以联系我。
 
 <!-- toc -->
 
@@ -26,7 +26,9 @@ tags:
 
 1. 本文针对小型低温透平膨胀机的一维设计理论，编写了一套自动计算程序，可以对设计温度区间、压力区间可以实现输入进、出口压力温度，立刻自动进行一维热力计算，并完整呈现每一步的步骤和结果。程序预先编制了待计算区间的物性表，采用线性插值的方法估计压力、温度、密度、焓、熵、压缩因子，可以实现在百分之一以内的误差。
 
-2. 随后根据热力计算数据，设计膨胀机叶轮，给出三维叶轮设计结果。
+2. 根据热力计算数据，设计膨胀机叶轮型线，使用径-轴流式叶轮，径流部分采用直叶片，轴流部分按出口相对流速与叶轮不同半径上圆周速度的匹配的方式确定出口角度，然后使用二次曲线过渡，设计出口导流段。最终使用 UG 导入计算的出的出口导流段型线，进行三维建模，给出三维叶轮设计结果。
+
+3. 随后将喷嘴、叶轮制造加工成实物，结合我们设计的实验平台，在给定进出口压力下测量叶轮降温曲线，降温到 100 K 大致需要 4 小时。在变工况实验中，我们改变进口压力，测量平衡时的流量和转速曲线，可以观察到随压力升高流量和转速都会提高，压力较高时流量变化较为缓慢。
 
 ### 关键词
 
@@ -38,7 +40,9 @@ In the field of refrigeration and cryogenic engineering, turboexpanders are extr
 
 1. This paper has written an automatic calculation program for the one-dimensional design theory of small-scale low-temperature turboexpander. It can analyse the input and outlet pressure temperature for the design temperature interval and pressure interval, and automatically perform one-dimensional thermal calculation immediately. Completely show the calculation method and results of each step. There are preset physical property table of the specific interval to be  calculated, and uses linear interpolation method to estimate the pressure, temperature, density, enthalpy, entropy and compression factor, which can achieve the error within one percent.
 
-2. Based on the thermal calculation data, the expander turbine is designed. Three-dimensional turbine design result is presented.
+2. According to the thermal calculation data, design the expander impeller profile line. We use the centrifugal turbine. The inlet part adopts the straight blade. And the axial flow part matches of the relative flow velocity of the outlet and the circumferential speed of the different radius of the impeller. Then it's designed using a quadratic transition. Finally, the UG is used to import the calculated outlet profile data, and then the impeller design result is given as a 3D model.
+
+3. Then the nozzle and impeller are manufactured. Combined with the experiment platform we designed, the impeller cooling curve is measured at a given inlet and outlet pressure. It takes about 4 hours to cool down to 100 K. During different working condition experiment, we changed the inlet pressure and measured the flow rate and rotation speed curve during the balance. It can found that the flow rate and rotation speed increase with the increase of the pressure, and the flow rate changes slowly when the pressure is high.
 
 ### KEYWORDS
 
