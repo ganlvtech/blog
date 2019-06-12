@@ -371,7 +371,7 @@ var vm = new Vue({
       return this.rho_3_;
     },
     T_3_() {
-      return Math.pow(this.p_2 / this.p_3, (this.n_ - 1) / this.n_) * this.T_2_;
+      return Math.pow(this.p_2 / this.p_3, this.n_1_n) * this.T_2_;
     },
     T_5() {
       return this.T_3_;
@@ -427,8 +427,52 @@ var vm = new Vue({
     R_N() {
       return this.D_N / 2;
     },
+    R_1_R_0() {
+      // TODO related with alpha_1', better interpolation
+      return (this.alpha_1_ / Math.PI * 180 - 10) * 0.01 + 1;
+    },
+    alpha_1A() {
+      // TODO related with alpha_1', better interpolation
+      return ((this.alpha_1_ / Math.PI * 180 - 10) * 2.222222 + 25) / 180 * Math.PI;
+    },
     D_0() {
-      return 0;
+      return 2 * Math.sqrt(Math.pow(this.R_N, 2) + Math.pow(this.R_1_R_0 * this.b, 2) + 2 * this.R_1_R_0 * this.b * this.alpha_1A * this.R_N);
+    },
+    Z_r() {
+      return 14;
+    },
+    delta_1() {
+      return 0.01 * this.D_1;
+    },
+    B_r() {
+      return 0.3 * this.D_1;
+    },
+    t_2m() {
+      return Math.PI * (this.D_2_ + this.D_2__) / (2 * this.Z_r);
+    },
+    theta_1_deg() {
+      return 4.5
+    },
+    theta_1() {
+      return this.theta_1_deg / 180 * Math.PI;
+    },
+    l_in() {
+      return 0.15 * this.D_1;
+    },
+    B_D() {
+      return this.t_2m / 0.77;
+    },
+    l_out() {
+      return 0.5 * this.B_D;
+    },
+    R_B() {
+      return 0.22 * this.D_1;
+    },
+    R_G_() {
+      return this.D_1;
+    },
+    R_G__() {
+      return 0.11 * this.D_1;
     }
   }
 });

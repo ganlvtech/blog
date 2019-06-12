@@ -13,266 +13,290 @@
 </head>
 
 <body>
-    <h1>膨胀机的热力性能及结构设计</h1>
     <div id="app">
-        <h2>热力计算与流道基本尺寸的确定</h2>
-        <h3>已知条件</h3>
-        <ul>
-            <li>工质 <input type="text" name="substance" value="空气" disabled>（质量分数 氮气/氩气/氧气 = 75.57/1.2691/23.16）</li>
-            <li>气体常数 $ R_g $ <input type="text" name="R_g" v-model="R_g"> $ J / (kg \cdot K) $</li>
-            <li>等熵指数 $ \kappa $ <input type="text" name="kappa" v-model="kappa"></li>
-            <li>相对分子质量 $ M_r $ <input type="text" name="substance" v-model="substance"> $ g/mol $</li>
-            <li>膨胀气体量 $ q_V $ <input type="text" name="q_V" v-model="q_V"> $ Nm^3/h $</li>
-            <li>膨胀气体量 $ q_m $ <span>{{ q_m | round }}</span> $ kg/s $</li>
-            <li>膨胀机进口温度 $ T_0 $ <input type="text" name="T_0" v-model="T_0"> $ K $</li>
-            <li>膨胀机进口压力 $ p_0 $ <input type="text" name="p_0" v-model="p_0"> $ MPa $</li>
-            <li>膨胀机出口压力 $ p_2 $ <input type="text" name="p_2" v-model="p_2"> $ MPa $</li>
-        </ul>
-        <h3>估取及选用值</h3>
-        <h4>估取</h4>
-        <ul>
-            <li>喷嘴中的速度系数 $ \varphi $ <input type="text" name="phi" v-model="phi"></li>
-            <li>工作轮中的速度系数 $ \psi $ <input type="text" name="psi" v-model="psi"></li>
-            <li>工作轮叶高轮径比 $ l_1 / D_1 $ <input type="text" name="l_1_D_1" v-model="l_1_D_1"></li>
-            <li>工作轮相对轴向间隙 $ \delta / l_m $ <input type="text" name="delta_l_m" v-model="delta_l_m"></li>
-            <li>喷嘴出口减窄系数 $ \tau_N $ <input type="text" name="tau_N" v-model="tau_N"></li>
-            <li>工作轮进口减窄系数 $ \tau_1 $ <input type="text" name="tau_1" v-model="tau_1"></li>
-            <li>工作轮出口减窄系数 $ \tau_2 $ <input type="text" name="tau_2" v-model="tau_2"></li>
-        </ul>
-        <h4>选定</h4>
-        <ul>
-            <li>喷嘴出口叶片角 $ \alpha_1' $ <input type="text" name="alpha_1_" v-model="alpha_1__deg"> $ ^{\circ} $</li>
-            <li>工作轮进口叶片角 $ \beta_1' $ <input type="text" name="beta_1_" v-model="beta_1__deg"> $ ^{\circ} $</li>
-            <li>工作轮出口叶片角 $ \beta_2' $ <input type="text" name="beta_2_" v-model="beta_2__deg"> $ ^{\circ} $</li>
-        </ul>
-        <h4>选取</h4>
-        <ul>
-            <li>轮径比 $ \mu $ <input type="text" name="mu" v-model="mu"></li>
-            <li>反动度 $ \rho $ <input type="text" name="rho" v-model="rho"></li>
-            <li>特性比 $ \bar{u}_1 $ <input type="text" name="bar_u_1" v-model="bar_u_1"></li>
-        </ul>
-        <h4>估取扩压比</h4>
-        <ul>
-            <li>扩压比 $ p_2 / p_3 $ <input type="text" name="p_2_p_3" v-model="p_2_p_3"></li>
-            <li>工作轮出口压力 $ p_3 = $ <span>{{ p_3 | round }}</span> $ MPa $</li>
-        </ul>
-        <h3>喷嘴中的流动</h3>
-        <ol>
-            <li>由 $ p_0, T_0 $ 及 $ p_2, p_3 $ 从 i-s 图上可查得（以下比焓的参考点为 REFPROP 中的默认点）
-                <ul>
-                    <li>进口比焓 $ i_0 = $ <span>{{ i_0 | round }}</span> $ J/kg $</li>
-                    <li>膨胀机出口理想比焓 $ i_{2s} = $ <span>{{ i_2s | round }}</span> $ J/kg $</li>
-                    <li>工作轮出口理想比焓 $ i_{2s}' = $ <span>{{ i_2s_ | round }}</span> $ J/kg $</li>
-                    <li>膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span>{{ h_s | round }}</span> $ J/kg $</li>
-                    <li>通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span>{{ h_s_ | round }}</span> $ J/kg $</li>
-                </ul>
-            </li>
-            <li>等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span>{{ c_s | round }}</span> $ m/s $</li>
-            <li>由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span>{{ Z_0 | round }}</span></li>
-            <li>喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span>{{ h_1s | round }}</span> $ J/kg $</li>
-            <li>喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span>{{ c_1 | round }}</span> $ m/s $</li>
-            <li>喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span>{{ i_1s | round }}</span> $ J/kg $</li>
-            <li>喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span>{{ i_1 | round }}</span> $ J/kg $</li>
-            <li>由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span>{{ p_1 | round }}</span> $ Pa $</li>
-            <li>由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span>{{ T_1 | round }}</span> $ K $</li>
-            <li>由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span>{{ Z_1 | round }}</span></li>
-            <li>喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span>{{ rho_1 | round }}</span> $ kg/m^3 $</li>
-            <li>多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span>{{ n | round }}</span></li>
-            <li>喷嘴出口喉部界面速度 $ c^\ast = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span>{{ c_ast | round }}</span> $ m/s $
-            </li>
-            <li>由于 $ c_1 > c^\ast $，采用收缩喷嘴时，气流在斜切口有偏转角，
-                $ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} =
-                \frac {(\frac{2}{n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}}
-                {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt{1 -(\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $
-                <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span><br>
-                $ \sin (\alpha_1' + \delta) = $ <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span> $ \sin (\alpha_1') = $ <span>{{ sin_alpha_1__delta | round }}</span> $ \delta = $ <span>{{ delta | round }}</span> $ ^{\circ} = $ <span>{{ delta | deg_to_minute | round }}</span> $ ' $<br>
-                $ \alpha_1 = \alpha_1' + \delta = $ <span>{{ alpha_1 | rad_to_deg | round }}</span> $ ^{\circ} $<br>
-                $ \delta = $ <span>{{ delta | rad_to_deg | round }}</span> $ ^{\circ} $<br>
-                一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ} $
-            </li>
-            <li>喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span>{{ c_1_ | round }}</span> $ m/s $<br>
-                比较第 5、13、15 三项可知 $ c_1 &gt; c_1' &gt; c^\ast $ 说明在喷嘴喉部截面之前已经达到声速
-            </li>
-            <li>喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span>{{ Ma_c1 | round }}</span><br>
-                一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴
-            </li>
-            <li>喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span>{{ q_N | round }}</span> $ J/kg $</li>
-            <li>喷嘴中的相对能量损失 $ \xi_N = \frac {q_N} {h_s'} = $ <span>{{ xi_N | round }}</span></li>
-            <li>喉部气体密度 $ \rho^\ast = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span>{{ rho_ast | round }}</span> $ kg/m^3 $</li>
-        </ol>
-        <h3>工作轮中的流动</h3>
-        <ol>
-            <li>轮周速度 $ u_1 = \bar{u}_1 c_s = $ <span>{{ u_1 | round }}</span> $ m/s $</li>
-            <li>出口圆周速度 $ u_{2m} = \mu u_1' = $ <span>{{ u_2m | round }}</span> $ m/s $</li>
-            <li>工作轮进口气流角<br>
-                $ \tan {\beta_1} = \frac {\sin {\alpha_1}} {\cos {\alpha_1} - \frac {u_1} {c_1}} = $ <span>{{ tan_beta_1 | round }}</span><br>
-                $ \beta_1 = 180 ^{\circ} + $ <span>{{ beta_1_raw | rad_to_deg | round }}</span> $ ^{\circ} = $ <span>{{ beta_1 | rad_to_deg | round }}</span> $ ^{\circ} $
-            </li>
-            <li>进工作轮相对速度 $ w_1 = \frac {c_1 \sin {\alpha_1}} {\sin {\beta_1}} = $ <span>{{ w_1 | round }}</span> $ m/s $</li>
-            <li>进工作轮相对速度的圆周分速度 $ w_{1u} = c_1 \cos{\alpha_1} - u_1 = $ <span>{{ w_1u | round }}</span> $ m/s $</li>
-            <li>进工作轮相对速度的径向分速度 $ w_{1r} = c_1 \sin{\beta_1} = $ <span>{{ w_1r | round }}</span> $ m/s $</li>
-            <li>进工作轮处相对速度的马赫数 $ {Ma}_{w_1} = \frac {w_1} {c_1'} = $ <span>{{ Ma_w_1 | round }}</span>，一般希望 $ {Ma}_{w_1} &lt; 0.5 $，以免过大的进口损失。</li>
-            <li>工作轮进口冲击损失 $ q_{w_{1u}} = \frac {w_{1u}^2} {2} = $ <span>{{ q_w_u1 | round }}</span> $ J/kg $，可忽略不计。</li>
-            <li>工作轮进口比焓 $ i_1' = i_1 + q_{w_{1u}} = $ <span>{{ i_1_ | round }}</span> $ J/kg $，由于冲击损失很像，工作轮进口状态可以认为与喷嘴出口状态相同。</li>
-            <li>由 $ p_1, i_1 $ 及 $ p_3 $ 从 i-s 图可查得工作轮出口等熵比焓 $ i_{2s}'' = $ <span>{{ i_2s__ | round }}</span> $ J/kg $</li>
-            <li>工作轮等熵比焓降 $ h_{2s} = i_1 - i_{2s}'' = $ <span>{{ h_2s | round }}</span> $ J/kg $</li>
-            <li>不考虑内部损失时，工作轮出口理想相对速度 $ w_{2s} = \sqrt {2 h_{2s} + w_{1 \tau}^2 + u_{2m}^2 - u_1^2} = $ <span>{{ w_2s | round }}</span> $ m/s $</li>
-            <li>实际相对速度 $ w_2 = \psi w_{2s} = $ <span>{{ w_2 | round }}</span> $ m/s $</li>
-            <li>工作轮中的能量损失 $ q_r = \frac{1}{2} (w_{2s}^2 - w_2^2) = $ <span>{{ q_r | round }}</span> $ J/kg $<br>
-                $ \xi_r = \frac {q_r} {h_s'} = $ <span>{{ xi_r | round }}</span></li>
-            <li>工作轮出口实际比焓 $ i_2 = i_{2s}'' + q_r = $ <span>{{ i_2 | round }}</span> $ J/kg $</li>
-            <li>由 $ p_2, i_2 $ 从 i-s 图可查得，工作轮出口实际温度 $ T_2 = $ <span>{{ T_2 | round }}</span> $ K $</li>
-            <li>由 $ p_3、T_2 $ 从 Z-p 图中可查得 $ Z_2 = $ <span>{{ Z_2 | round }}</span> $ $</li>
-            <li>工作轮出口实际气体密度 $ \rho_2 = \frac {p_3} {Z_2 R_g T_2} = $ <span>{{ rho_2 | round }}</span> $ kg/m^3 $</li>
-            <li>工作轮出口气流的绝对速度方向 $ \tan {\alpha_2} = \frac {\sin {\beta_2}} {\cos {\beta_2} - \frac {u_2} {w_2}} = $ <span>{{ tan_alpha_2 | round }}</span><br>
-                $ \alpha_2 = $ <span>{{ alpha_2 | rad_to_deg | round }}</span> $ ^{\circ} $
-            </li>
-            <li>工作轮出口气流绝对速度 $ c_2 = \frac{w_2 \sin {\beta_2}} {\sin {\alpha_2}} = $ <span>{{ c_2 | round }}</span> $ m/s $</li>
-            <li>余速损失 $ q_K = \frac {c_2^2} {2} = $ <span>{{ q_K | round }}</span> $ J/kg $, $ \xi_K = \frac {q_K} {h_s'} = $ <span>{{ xi_K | round }}</span></li>
-            <li>流道效率 $ \eta_u = 1 - \xi_N - \xi_r - \xi_K = $ <span>{{ eta_u | round }}</span></li>
-        </ol>
-        <h3>喷嘴与工作轮基本尺寸的确定</h3>
-        <ol>
-            <li>工作轮直径 $ D_1 = \sqrt {\frac {q_m} {\pi (\frac {l_1} {D_1}) w_1 \sin {\beta_1} \rho_1 \tau_1}} = $ <span>{{ D_1_raw | round }}</span> $ m $<br>
-                圆整后取 $ D_1 = $ <span>{{ D_1 | m_to_mm | round }}</span> $ mm $ 这时 $ \frac {l_1} {D_1} = \frac {q_m} {\pi D_1^2 w_1 \sin {\beta_1} \rho_1 \tau_1} = $ <span>{{ l_1_D_1_round | round }}</span></li>
-            <li>喷嘴出口直径 $ D_N = D_1 + 2 \Delta_1 = mm $，这里按固定叶片设计，因此取喷嘴与工作轮之间的径向间隙较小。如果采用转动喷嘴叶片调节，就必须加大间隙，由调节要求确定。</li>
-            <li>喷嘴数 $ Z_N $ 在固定叶片中可按图 4-13 选取，这里选取 $ Z_N = $ <span>{{ Z_N }}</span>；如果采用大叶片，则可在 $ 8 \sim 12 $ 之间选用</li>
-            <li>喷嘴喉部宽度<br>
-                $ b_N \approx \tau_N t_N \sin {\alpha_1'} = \frac {\pi D_N} {Z_N} \tau_N \sin {\alpha_1'} = $ <span>{{ b_N | m_to_mm  | round }}</span> $ mm $
-            </li>
-            <li>喷嘴叶片高度<br>
-                $ l_N = \frac {q_m} {\rho^\ast c^\ast b_N Z_N} = $ <span>{{ l_N | m_to_mm  | round }}</span> $ mm $
-            </li>
-            <li>工作轮进口叶片高度 $ l_1 = l_N + \Delta l = mm $ <span>{{ l_1 | m_to_mm  | round }}</span> $ $，这里取过盖度 $ \frac {\Delta l} {\Delta_1} = 1.7 $（一般约为 $ 1.7 \sim 1.9 $ )，$ \Delta l = 1.7 \Delta_1 = mm $，因此 $ \frac {l_1} {D_1} = $ <span>{{ l_1_D_1_calculated | round }}</span>，较大于原估取值，这里不再重新计算。</li>
-            <li>工作轮出口平均直径 $ D_{2m} = \mu D_1 = $ <span>{{ D_2m | m_to_mm  | round }}</span> $ mm $</li>
-            <li>工作轮出口截面积（本体未考虑内部损失对 $ \rho_2 $ 的影响）<br>
-                $ A_2 = \frac {q_m} {w_2 \sin {\beta_2} \rho_2 \tau_2} = $ <span>{{ A_2 | round }}</span> $ m^2 $
-            </li>
-            <li>工作轮出口内径<br>
-                $ D_2'' = \sqrt{D_{2m}^2 - \frac {2 A_2} {\pi}} = $ <span>{{ D_2__ | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>轮毂比 $ k_r = \frac {D_2''} {D_1} = $ <span>{{ k_r | round }}</span>，与原取值相差不多，一般 $ k_r = 0.2 \sim 0.3 $</li>
-            <li>工作轮出口外径<br>
-                $ D_2' = \sqrt{D_{2m}^2 + \frac {2 A_2} {\pi}} = $ <span>{{ D_2_ | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>出口叶片高度 $ l_2 = \frac {D_2' - D_2''} {2} = $ <span>{{ l_2 | m_to_mm | round }}</span> $ mm $</li>
-            <li>进出口叶片平均高度 $ l_m = \frac {l_1 + l_2} {2} = $ <span>{{ l_m | m_to_mm | round }}</span> $ mm $</li>
-            <li>轴向间隙比 $ \frac {\delta} {l_m} = $ <span>{{ delta_l_m | round }}</span>，与原取值相差不多，这里取轴向间隙 $ \delta = 0.4 mm $</li>
-            <li>工作轮子午面扩散角<br>
-                $ \theta = \arctan {\frac {2 (l_2 - l_1)} {D_1 - D_{2m}}} = $ <span>{{ theta | rad_to_deg | round }}</span> $ ^\circ $
-            </li>
-        </ol>
-        <h3>内部损失计算</h3>
-        <ol>
-            <li>
-                轮背摩擦损失
-                <ol>
-                    <li>由 $ T_1, p_1 $ 可查得空气的动力粘度 $ \eta_1 = $ <span>{{ eta_1 | round }}</span> $ Pa \cdot s $</li>
-                    <li>运动粘度 $ \nu_1 = \frac {\eta_1} {\rho_1} = $ <span>{{ nu_1 | round }}</span> $ m^2/s $</li>
-                    <li>以喷嘴出口参数定型的雷诺数<br>
-                        $ Re = \frac {u_1 D_1} {\nu_1} = $ <span>{{ Re | round }}</span> $ $
-                    </li>
-                    <li>轮背摩擦系数<br>$ \zeta_f = \frac {12.87} {10^3} \frac {1} {\sqrt[5]{Re}} = $ <span>{{ zeta_f | round }}</span><br>
-                        此值与原估取值相差不多。
-                    </li>
-                    <li>轮背摩擦功率<br>
-                        $ P_B = K \zeta_f \rho_1 u_1^3 D_1^2 = $ <span>{{ P_B | round }}</span> $ W $<br>
-                        这里对半开式工作轮取 $ K = 4 $
-                    </li>
-                    <li>单位轮背摩擦损失 $ q_B = \frac {P_B} {q_m} = $ <span>{{ q_B | round }}</span> $ J/kg $</li>
-                    <li>相对轮背摩擦损失 $ \xi_B = \frac {q_B} {h_s'} = $ <span>{{ xi_B | round }}</span></li>
-                </ol>
-            </li>
-            <li>内泄漏损失<br>
-                $ \xi_l = 1.3 \frac {\delta} {l_m} (\eta_u - \xi_B) = $ <span>{{ xi_l | round }}</span><br>
-                $ q_l = \xi_l h_s' = $ <span>{{ q_l | round }}</span> $ J/kg $
-            </li>
-            <li>按通流部分焓降计算的等熵效率<br>
-                $ \eta_s' = 1 - (\xi_N + \xi_r + \xi_K + \xi_l) = $ <span>{{ eta_s_ | round }}</span>
-            </li>
-            <li>进入扩压器时气体的比焓<br>
-                $ i_2' = i_4 = i_2 + q_B + q_l = $ <span>{{ i_2_ | round }}</span> $ J/kg $
-            </li>
-            <li>进入扩压器时气体由 $ p_3, i_2' $ 可查得 $ T_2' = T_4 = $ <span>{{ T_2_ | round }}</span> $ K $</li>
-        </ol>
-        <h3>扩压器中的流动</h3>
-        <ol>
-            <li>扩压后气体流速<br>
-                $ c_3' = \sqrt {c_2^2 - \frac {2 \kappa} {\kappa - 1} Z_2' R_g T_2' \left [(\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} - 1 \right ] } = $ <span>{{ c_3_ | round }}</span> $ m/s $<br>
-                符合一般的要求范围 $ c_s' = 5 \sim 10 m/s $，这里估取 $ \eta_K = $ <span>{{ eta_K | round }}</span><br>
-                因此<br>
-                $ \frac {n - 1} {n} = \frac {1} {\eta \kappa} \frac {\kappa - 1} {\kappa} = $ <span>{{ n_1_n | round }}</span> $ , n = $ <span>{{ n_ | round }}</span><br>
-            </li>
-            <li>扩压器出口气体密度<br>
-                $ \rho_3' = \rho_5 = (\frac {p_2} {p_3})^{\frac {1} {n}} \rho_2 = $ <span>{{ rho_3_ | round }}</span> $ kg/m^3 $
-            </li>
-            <li>扩压器出口温度<br>
-                $ T_3' = T_5 = (\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} T_2' = $ <span>{{ T_3_ | round }}</span> $ K $
-            </li>
-            <li>由 $ p_2, T_3' $ 从 i-s 图可得扩压器出口实际比焓 $ i_3' = i_5 = $ <span>{{ i_3_ | round }}</span> $ J/kg $</li>
-            <li>扩压器进口气体密度<br>
-                $ \rho_2' = \frac {p_3} {Z_2' R_g T_2'} = $ <span>{{ rho_2_ | round }}</span> $ kg/m^3 $
-            </li>
-            <li>扩压器出口比焓校核<br>
-                $ i_5 = i_2 + q_B + q_K + q_l = $ <span>{{ i_5_verify | round }}</span> $ J/kg $
-            </li>
-            <li>扩压器进口直径<br>
-                为了使从工作轮排除的气流平滑过渡到扩压器，一般使扩压器进口直径等于工作轮出口外径，即<br>
-                $ D_K = D_2' = $ <span>{{ D_K | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>导流螺帽直径<br>
-                为了使工作轮排除的气流不至于突然减速，一般都在工作轮端假装导流螺帽，其直径等于工作轮出口内经，即<br>
-                $ d = D_2'' = $ <span>{{ d | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>扩压器出口直径<br>
-                $ D_3 = \sqrt {\frac {4 q_m} {\pi c_3' \sin {\alpha_2} \rho_3'}} = $ <span>{{ D_3 | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>扩压器长度<br>
-                $ L = \frac {D_3 - D_K} {2 \tan {\alpha_K}} = $ <span>{{ L | m_to_mm | round }}</span> $ mm $
-            </li>
-        </ol>
-        <h3>效率、制冷量、功率和转速</h3>
-        <ol>
-            <li>等熵效率<br>
-                $ \eta_s = \frac {i_0 - i_5} {i_0 - i_{2s}} = $ <span>{{ eta_s | round }}</span>
-            </li>
-            <li>制冷量<br>
-                $ Q_0 = \eta_s h_s q_m = $ <span>{{ Q_0 | round }}</span> $ W $
-            </li>
-            <li>轴功率<br>
-                $ P_T = \eta_e h_s q_m = $ <span>{{ P_T | round }}</span> $ W $
-            </li>
-            <li>转速<br>
-                $ n = \frac {60 u_1} {\pi D_1} = $ <span>{{ n_rotation | round }}</span> $ r/min $
-                上述计算所得的速度三角形及 i-s 图见图 TODO 与图 TODO，计算结果列与表 TODO 中的第 TODO 栏数据中。可以看出，表中后三栏的数据基本上是一致的，但是由于采用了扩压器，透平膨胀机实际的等熵效率提高了。
-            </li>
-        </ol>
-        <h2>流道几何形状的确定</h2>
-        <h3>喷嘴叶片型线的选定及叶片的配置</h3>
-        <ol>
-            <li>选用 TC-2P 型径向叶型</li>
-            <li>选用相对跨距 $ l_N = 0.60 $，这时喷嘴叶片出口跨距<br>
-                $ t_N = \frac {\pi D_N} {Z_N} = $ <span>{{ t_N | m_to_mm | round }}</span> $ mm $$ 弦长 $$ b = \frac {t_N} {l_N} = $ <span>{{ b | m_to_mm | round }}</span> $ mm $
-            </li>
-            <li>根据 TC-2P 叶型的试验数据，当 $ l_N = 0.60 $ 时，为了保证出口角 $ \alpha_1' = 16^\circ $，要求叶片安装角 $ \alpha_{1A} = 33^\circ $</li>
-            <li>喷嘴叶片外径<br>
-                $ D_0 \approx 2 \sqrt {R_N^2 + (ab)^2 + 2 a b \sin {\alpha_{1A}} R_N} = mm $
-            </li>
-            <li>由所得的 $ b $ 值按所选叶型的相对坐标作出叶型图形，由所得叶型图及安装角 $ \alpha_{1A} $ 可以配置喷嘴叶片如图 TODO 所示。这时以叶尖出口点 A 为圆心，以计算所得的喷嘴喉部宽度 $ b_N $为半径，所做圆弧应与叶型图背弧线相切。否则应重新修正 $ l_N $ 值。</li>
-            考虑到从蜗壳到喷嘴叶片的过渡，取喷嘴环的直径 $ D_0' = mm $</li>
-        </ol>
+        <div style="position: fixed; top: 0; width: 37%; height: 100%; overflow-y: auto;">
+            <h2>热力计算与流道基本尺寸的确定</h2>
+            <h3>已知条件</h3>
+            <ul>
+                <li>工质 <input type="text" name="substance" value="空气" disabled>（质量分数 氮气/氩气/氧气 = 75.57/1.2691/23.16）</li>
+                <li>气体常数 $ R_g $ <input type="text" name="R_g" v-model="R_g"> $ J / (kg \cdot K) $</li>
+                <li>等熵指数 $ \kappa $ <input type="text" name="kappa" v-model="kappa"></li>
+                <li>相对分子质量 $ M_r $ <input type="text" name="substance" v-model="substance"> $ g/mol $</li>
+                <li>膨胀气体量 $ q_V $ <input type="text" name="q_V" v-model="q_V"> $ Nm^3/h $</li>
+                <li>膨胀气体量 $ q_m $ <span>{{ q_m | round }}</span> $ kg/s $</li>
+                <li>膨胀机进口温度 $ T_0 $ <input type="text" name="T_0" v-model="T_0"> $ K $</li>
+                <li>膨胀机进口压力 $ p_0 $ <input type="text" name="p_0_MPa" v-model="p_0_MPa"> $ MPa $</li>
+                <li>膨胀机出口压力 $ p_2 $ <input type="text" name="p_2_MPa" v-model="p_2_MPa"> $ MPa $</li>
+            </ul>
+            <h3>估取及选用值</h3>
+            <h4>估取</h4>
+            <ul>
+                <li>喷嘴中的速度系数 $ \varphi $ <input type="text" name="phi" v-model="phi"></li>
+                <li>工作轮中的速度系数 $ \psi $ <input type="text" name="psi" v-model="psi"></li>
+                <li>工作轮叶高轮径比 $ l_1 / D_1 $ <input type="text" name="l_1_D_1" v-model="l_1_D_1"></li>
+                <li>工作轮相对轴向间隙 $ \delta / l_m $ <input type="text" name="delta_l_m" v-model="delta_l_m"></li>
+                <li>喷嘴出口减窄系数 $ \tau_N $ <input type="text" name="tau_N" v-model="tau_N"></li>
+                <li>工作轮进口减窄系数 $ \tau_1 $ <input type="text" name="tau_1" v-model="tau_1"></li>
+                <li>工作轮出口减窄系数 $ \tau_2 $ <input type="text" name="tau_2" v-model="tau_2"></li>
+            </ul>
+            <h4>选定</h4>
+            <ul>
+                <li>喷嘴出口叶片角 $ \alpha_1' $ <input type="text" name="alpha_1_" v-model="alpha_1__deg"> $ ^{\circ} $</li>
+                <li>工作轮进口叶片角 $ \beta_1' $ <input type="text" name="beta_1_" v-model="beta_1__deg"> $ ^{\circ} $</li>
+                <li>工作轮出口叶片角 $ \beta_2' $ <input type="text" name="beta_2_" v-model="beta_2__deg"> $ ^{\circ} $</li>
+            </ul>
+            <h4>选取</h4>
+            <ul>
+                <li>轮径比 $ \mu $ <input type="text" name="mu" v-model="mu"></li>
+                <li>反动度 $ \rho $ <input type="text" name="rho" v-model="rho"></li>
+                <li>特性比 $ \bar{u}_1 $ <input type="text" name="bar_u_1" v-model="bar_u_1"></li>
+            </ul>
+            <h4>估取扩压比</h4>
+            <ul>
+                <li>扩压比 $ p_2 / p_3 $ <input type="text" name="p_2_p_3" v-model="p_2_p_3"></li>
+                <li>工作轮出口压力 $ p_3 = $ <span>{{ p_3 | round }}</span> $ MPa $</li>
+            </ul>
+        </div>
+        <div style="margin-left: 40%;">
+            <h1>膨胀机的热力性能及结构设计</h1>
+            <h3>喷嘴中的流动</h3>
+            <ol>
+                <li>由 $ p_0, T_0 $ 及 $ p_2, p_3 $ 从 i-s 图上可查得（以下比焓的参考点为 REFPROP 中的默认点）
+                    <ul>
+                        <li>进口比焓 $ i_0 = $ <span>{{ i_0 | round }}</span> $ J/kg $</li>
+                        <li>膨胀机出口理想比焓 $ i_{2s} = $ <span>{{ i_2s | round }}</span> $ J/kg $</li>
+                        <li>工作轮出口理想比焓 $ i_{2s}' = $ <span>{{ i_2s_ | round }}</span> $ J/kg $</li>
+                        <li>膨胀机总的理想比焓降 $ h_s = i_0 - i_{2s} = $ <span>{{ h_s | round }}</span> $ J/kg $</li>
+                        <li>通流部分理想比焓降 $ h_s' = i_0 - i_{2s}' = $ <span>{{ h_s_ | round }}</span> $ J/kg $</li>
+                    </ul>
+                </li>
+                <li>等焓理想速度 $ c_s = \sqrt{2 h_s'} = $ <span>{{ c_s | round }}</span> $ m/s $</li>
+                <li>由 $ p_0, T_0 $ 从 Z-p 图上查得 $ Z_0 = $ <span>{{ Z_0 | round }}</span></li>
+                <li>喷嘴中等熵比焓降 $ h_{1s} = (1 - \rho) h_s' = $ <span>{{ h_1s | round }}</span> $ J/kg $</li>
+                <li>喷嘴出口实际速度 $ c_1 = \varphi \sqrt{2 h_{1s}} = $ <span>{{ c_1 | round }}</span> $ m/s $</li>
+                <li>喷嘴出口理想比焓 $ i_{1s} = i_0 - h_{1s} = $ <span>{{ i_1s | round }}</span> $ J/kg $</li>
+                <li>喷嘴出口实际比焓 $ i_{1} = i_0 - \phi^2 h_{1s} = $ <span>{{ i_1 | round }}</span> $ J/kg $</li>
+                <li>由 $ p_0, T_0 $ 及 $ i_{1s} $ 从 i-s 图可查得 $ p_1 = $ <span>{{ p_1 | round }}</span> $ Pa $</li>
+                <li>由 $ p_1, i_1 $ 从 i-s 图可查得 $ T_1 = $ <span>{{ T_1 | round }}</span> $ K $</li>
+                <li>由 $ p_1, T_1 $ 从 Z-p 图可查得 $ Z_1 = $ <span>{{ Z_1 | round }}</span></li>
+                <li>喷嘴出口气体密度 $ \rho_1 = \frac {p_1} {Z_1 R_g T_1} = $ <span>{{ rho_1 | round }}</span> $ kg/m^3 $</li>
+                <li>多变指数 $ n = \frac {\kappa} {\kappa - \varphi (\kappa - 1)} = $ <span>{{ n | round }}</span></li>
+                <li>喷嘴出口喉部界面速度 $ c^\ast = \sqrt {2 Z_0 R_g T_0 \frac {\kappa} {\kappa - 1} \frac {n - 1} {n + 1}} = $ <span>{{ c_ast | round }}</span> $ m/s $
+                </li>
+                <li>由于 $ c_1 > c^\ast $，采用收缩喷嘴时，气流在斜切口有偏转角，
+                    $ \frac {\sin (\alpha_1' + \delta)} {\sin (\alpha_1')} =
+                    \frac {(\frac{2}{n + 1}) ^ {\frac {1} {n - 1}} \sqrt {\frac {n - 1} {n + 1}}}
+                    {(\frac {p_1} {p_0}) ^ {\frac {1} {n}} \sqrt{1 -(\frac {p_1} {p_0}) ^ {\frac {n - 1} {n}}}} = $
+                    <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span><br>
+                    $ \sin (\alpha_1' + \delta) = $ <span>{{ sin_alpha_1__delta_sin_alpha_1_ | round }}</span> $ \sin (\alpha_1') = $ <span>{{ sin_alpha_1__delta | round }}</span> $ \delta = $ <span>{{ delta | round }}</span> $ ^{\circ} = $ <span>{{ delta | deg_to_minute | round }}</span> $ ' $<br>
+                    $ \alpha_1 = \alpha_1' + \delta = $ <span>{{ alpha_1 | rad_to_deg | round }}</span> $ ^{\circ} $<br>
+                    $ \delta = $ <span>{{ delta | rad_to_deg | round }}</span> $ ^{\circ} $<br>
+                    一般希望 $ \delta &lt; 2^{\circ} \sim 3^{\circ} $
+                </li>
+                <li>喷嘴出口状态下的声速 $ c_1' = \sqrt{n Z_1 R T_1} = $ <span>{{ c_1_ | round }}</span> $ m/s $<br>
+                    比较第 5、13、15 三项可知 $ c_1 &gt; c_1' &gt; c^\ast $ 说明在喷嘴喉部截面之前已经达到声速
+                </li>
+                <li>喷嘴出口绝对速度马赫数 $ {Ma}_{c1} = \frac {c_1} {c_1'} = $ <span>{{ Ma_c1 | round }}</span><br>
+                    一般在 $ {Ma}_{c1} &lt; 1.1 \sim 1.2 $ 时仍可采用收缩喷嘴
+                </li>
+                <li>喷嘴中的能量损失 $ q_N = (1 - \varphi ^ 2) h_{1s} = $ <span>{{ q_N | round }}</span> $ J/kg $</li>
+                <li>喷嘴中的相对能量损失 $ \xi_N = \frac {q_N} {h_s'} = $ <span>{{ xi_N | round }}</span></li>
+                <li>喉部气体密度 $ \rho^\ast = \frac {2} {n + 1} ^ \frac {1} {n - 1} \rho_0 = \frac {2} {n + 1} ^ \frac {1} {n - 1} \frac {p_0} {Z_0 R_g T_0} = $ <span>{{ rho_ast | round }}</span> $ kg/m^3 $</li>
+            </ol>
+            <h3>工作轮中的流动</h3>
+            <ol>
+                <li>轮周速度 $ u_1 = \bar{u}_1 c_s = $ <span>{{ u_1 | round }}</span> $ m/s $</li>
+                <li>出口圆周速度 $ u_{2m} = \mu u_1' = $ <span>{{ u_2m | round }}</span> $ m/s $</li>
+                <li>工作轮进口气流角<br>
+                    $ \tan {\beta_1} = \frac {\sin {\alpha_1}} {\cos {\alpha_1} - \frac {u_1} {c_1}} = $ <span>{{ tan_beta_1 | round }}</span><br>
+                    $ \beta_1 = 180 ^{\circ} + $ <span>{{ beta_1_raw | rad_to_deg | round }}</span> $ ^{\circ} = $ <span>{{ beta_1 | rad_to_deg | round }}</span> $ ^{\circ} $
+                </li>
+                <li>进工作轮相对速度 $ w_1 = \frac {c_1 \sin {\alpha_1}} {\sin {\beta_1}} = $ <span>{{ w_1 | round }}</span> $ m/s $</li>
+                <li>进工作轮相对速度的圆周分速度 $ w_{1u} = c_1 \cos{\alpha_1} - u_1 = $ <span>{{ w_1u | round }}</span> $ m/s $</li>
+                <li>进工作轮相对速度的径向分速度 $ w_{1r} = c_1 \sin{\beta_1} = $ <span>{{ w_1r | round }}</span> $ m/s $</li>
+                <li>进工作轮处相对速度的马赫数 $ {Ma}_{w_1} = \frac {w_1} {c_1'} = $ <span>{{ Ma_w_1 | round }}</span>，一般希望 $ {Ma}_{w_1} &lt; 0.5 $，以免过大的进口损失。</li>
+                <li>工作轮进口冲击损失 $ q_{w_{1u}} = \frac {w_{1u}^2} {2} = $ <span>{{ q_w_u1 | round }}</span> $ J/kg $，可忽略不计。</li>
+                <li>工作轮进口比焓 $ i_1' = i_1 + q_{w_{1u}} = $ <span>{{ i_1_ | round }}</span> $ J/kg $，由于冲击损失很像，工作轮进口状态可以认为与喷嘴出口状态相同。</li>
+                <li>由 $ p_1, i_1 $ 及 $ p_3 $ 从 i-s 图可查得工作轮出口等熵比焓 $ i_{2s}'' = $ <span>{{ i_2s__ | round }}</span> $ J/kg $</li>
+                <li>工作轮等熵比焓降 $ h_{2s} = i_1 - i_{2s}'' = $ <span>{{ h_2s | round }}</span> $ J/kg $</li>
+                <li>不考虑内部损失时，工作轮出口理想相对速度 $ w_{2s} = \sqrt {2 h_{2s} + w_{1 \tau}^2 + u_{2m}^2 - u_1^2} = $ <span>{{ w_2s | round }}</span> $ m/s $</li>
+                <li>实际相对速度 $ w_2 = \psi w_{2s} = $ <span>{{ w_2 | round }}</span> $ m/s $</li>
+                <li>工作轮中的能量损失 $ q_r = \frac{1}{2} (w_{2s}^2 - w_2^2) = $ <span>{{ q_r | round }}</span> $ J/kg $<br>
+                    $ \xi_r = \frac {q_r} {h_s'} = $ <span>{{ xi_r | round }}</span></li>
+                <li>工作轮出口实际比焓 $ i_2 = i_{2s}'' + q_r = $ <span>{{ i_2 | round }}</span> $ J/kg $</li>
+                <li>由 $ p_2, i_2 $ 从 i-s 图可查得，工作轮出口实际温度 $ T_2 = $ <span>{{ T_2 | round }}</span> $ K $</li>
+                <li>由 $ p_3、T_2 $ 从 Z-p 图中可查得 $ Z_2 = $ <span>{{ Z_2 | round }}</span> $ $</li>
+                <li>工作轮出口实际气体密度 $ \rho_2 = \frac {p_3} {Z_2 R_g T_2} = $ <span>{{ rho_2 | round }}</span> $ kg/m^3 $</li>
+                <li>工作轮出口气流的绝对速度方向 $ \tan {\alpha_2} = \frac {\sin {\beta_2}} {\cos {\beta_2} - \frac {u_2} {w_2}} = $ <span>{{ tan_alpha_2 | round }}</span><br>
+                    $ \alpha_2 = $ <span>{{ alpha_2 | rad_to_deg | round }}</span> $ ^{\circ} $
+                </li>
+                <li>工作轮出口气流绝对速度 $ c_2 = \frac{w_2 \sin {\beta_2}} {\sin {\alpha_2}} = $ <span>{{ c_2 | round }}</span> $ m/s $</li>
+                <li>余速损失 $ q_K = \frac {c_2^2} {2} = $ <span>{{ q_K | round }}</span> $ J/kg $, $ \xi_K = \frac {q_K} {h_s'} = $ <span>{{ xi_K | round }}</span></li>
+                <li>流道效率 $ \eta_u = 1 - \xi_N - \xi_r - \xi_K = $ <span>{{ eta_u | round }}</span></li>
+            </ol>
+            <h3>喷嘴与工作轮基本尺寸的确定</h3>
+            <ol>
+                <li>工作轮直径 $ D_1 = \sqrt {\frac {q_m} {\pi (\frac {l_1} {D_1}) w_1 \sin {\beta_1} \rho_1 \tau_1}} = $ <span>{{ D_1_raw | round }}</span> $ m $<br>
+                    圆整后取 $ D_1 = $ <span>{{ D_1 | m_to_mm | round }}</span> $ mm $ 这时 $ \frac {l_1} {D_1} = \frac {q_m} {\pi D_1^2 w_1 \sin {\beta_1} \rho_1 \tau_1} = $ <span>{{ l_1_D_1_round | round }}</span></li>
+                <li>喷嘴出口直径 $ D_N = D_1 + 2 \Delta_1 = mm $，这里按固定叶片设计，因此取喷嘴与工作轮之间的径向间隙较小。如果采用转动喷嘴叶片调节，就必须加大间隙，由调节要求确定。</li>
+                <li>喷嘴数 $ Z_N $ 在固定叶片中可按图 4-13 选取，这里选取 $ Z_N = $ <span>{{ Z_N }}</span>；如果采用大叶片，则可在 $ 8 \sim 12 $ 之间选用</li>
+                <li>喷嘴喉部宽度<br>
+                    $ b_N \approx \tau_N t_N \sin {\alpha_1'} = \frac {\pi D_N} {Z_N} \tau_N \sin {\alpha_1'} = $ <span>{{ b_N | m_to_mm  | round }}</span> $ mm $
+                </li>
+                <li>喷嘴叶片高度<br>
+                    $ l_N = \frac {q_m} {\rho^\ast c^\ast b_N Z_N} = $ <span>{{ l_N | m_to_mm  | round }}</span> $ mm $
+                </li>
+                <li>工作轮进口叶片高度 $ l_1 = l_N + \Delta l = mm $ <span>{{ l_1 | m_to_mm  | round }}</span> $ $，这里取过盖度 $ \frac {\Delta l} {\Delta_1} = 1.7 $（一般约为 $ 1.7 \sim 1.9 $ )，$ \Delta l = 1.7 \Delta_1 = mm $，因此 $ \frac {l_1} {D_1} = $ <span>{{ l_1_D_1_calculated | round }}</span>，较大于原估取值，这里不再重新计算。</li>
+                <li>工作轮出口平均直径 $ D_{2m} = \mu D_1 = $ <span>{{ D_2m | m_to_mm  | round }}</span> $ mm $</li>
+                <li>工作轮出口截面积（本体未考虑内部损失对 $ \rho_2 $ 的影响）<br>
+                    $ A_2 = \frac {q_m} {w_2 \sin {\beta_2} \rho_2 \tau_2} = $ <span>{{ A_2 | round }}</span> $ m^2 $
+                </li>
+                <li>工作轮出口内径<br>
+                    $ D_2'' = \sqrt{D_{2m}^2 - \frac {2 A_2} {\pi}} = $ <span>{{ D_2__ | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>轮毂比 $ k_r = \frac {D_2''} {D_1} = $ <span>{{ k_r | round }}</span>，与原取值相差不多，一般 $ k_r = 0.2 \sim 0.3 $</li>
+                <li>工作轮出口外径<br>
+                    $ D_2' = \sqrt{D_{2m}^2 + \frac {2 A_2} {\pi}} = $ <span>{{ D_2_ | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>出口叶片高度 $ l_2 = \frac {D_2' - D_2''} {2} = $ <span>{{ l_2 | m_to_mm | round }}</span> $ mm $</li>
+                <li>进出口叶片平均高度 $ l_m = \frac {l_1 + l_2} {2} = $ <span>{{ l_m | m_to_mm | round }}</span> $ mm $</li>
+                <li>轴向间隙比 $ \frac {\delta} {l_m} = $ <span>{{ delta_l_m | round }}</span>，与原取值相差不多，这里取轴向间隙 $ \delta = 0.4 mm $</li>
+                <li>工作轮子午面扩散角<br>
+                    $ \theta = \arctan {\frac {2 (l_2 - l_1)} {D_1 - D_{2m}}} = $ <span>{{ theta | rad_to_deg | round }}</span> $ ^\circ $
+                </li>
+            </ol>
+            <h3>内部损失计算</h3>
+            <ol>
+                <li>
+                    轮背摩擦损失
+                    <ol>
+                        <li>由 $ T_1, p_1 $ 可查得空气的动力粘度 $ \eta_1 = $ <span>{{ eta_1 | round }}</span> $ Pa \cdot s $</li>
+                        <li>运动粘度 $ \nu_1 = \frac {\eta_1} {\rho_1} = $ <span>{{ nu_1 | round }}</span> $ m^2/s $</li>
+                        <li>以喷嘴出口参数定型的雷诺数<br>
+                            $ Re = \frac {u_1 D_1} {\nu_1} = $ <span>{{ Re | round }}</span> $ $
+                        </li>
+                        <li>轮背摩擦系数<br>$ \zeta_f = \frac {12.87} {10^3} \frac {1} {\sqrt[5]{Re}} = $ <span>{{ zeta_f | round }}</span><br>
+                            此值与原估取值相差不多。
+                        </li>
+                        <li>轮背摩擦功率<br>
+                            $ P_B = K \zeta_f \rho_1 u_1^3 D_1^2 = $ <span>{{ P_B | round }}</span> $ W $<br>
+                            这里对半开式工作轮取 $ K = 4 $
+                        </li>
+                        <li>单位轮背摩擦损失 $ q_B = \frac {P_B} {q_m} = $ <span>{{ q_B | round }}</span> $ J/kg $</li>
+                        <li>相对轮背摩擦损失 $ \xi_B = \frac {q_B} {h_s'} = $ <span>{{ xi_B | round }}</span></li>
+                    </ol>
+                </li>
+                <li>内泄漏损失<br>
+                    $ \xi_l = 1.3 \frac {\delta} {l_m} (\eta_u - \xi_B) = $ <span>{{ xi_l | round }}</span><br>
+                    $ q_l = \xi_l h_s' = $ <span>{{ q_l | round }}</span> $ J/kg $
+                </li>
+                <li>按通流部分焓降计算的等熵效率<br>
+                    $ \eta_s' = 1 - (\xi_N + \xi_r + \xi_K + \xi_l) = $ <span>{{ eta_s_ | round }}</span>
+                </li>
+                <li>进入扩压器时气体的比焓<br>
+                    $ i_2' = i_4 = i_2 + q_B + q_l = $ <span>{{ i_2_ | round }}</span> $ J/kg $
+                </li>
+                <li>进入扩压器时气体由 $ p_3, i_2' $ 可查得 $ T_2' = T_4 = $ <span>{{ T_2_ | round }}</span> $ K $</li>
+            </ol>
+            <h3>扩压器中的流动</h3>
+            <ol>
+                <li>扩压后气体流速<br>
+                    $ c_3' = \sqrt {c_2^2 - \frac {2 \kappa} {\kappa - 1} Z_2' R_g T_2' \left [(\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} - 1 \right ] } = $ <span>{{ c_3_ | round }}</span> $ m/s $<br>
+                    符合一般的要求范围 $ c_s' = 5 \sim 10 m/s $，这里估取 $ \eta_K = $ <span>{{ eta_K | round }}</span><br>
+                    因此<br>
+                    $ \frac {n - 1} {n} = \frac {1} {\eta_K} \frac {\kappa - 1} {\kappa} = $ <span>{{ n_1_n | round }}</span> $ , n = $ <span>{{ n_ | round }}</span><br>
+                </li>
+                <li>扩压器出口气体密度<br>
+                    $ \rho_3' = \rho_5 = (\frac {p_2} {p_3})^{\frac {1} {n}} \rho_2 = $ <span>{{ rho_3_ | round }}</span> $ kg/m^3 $
+                </li>
+                <li>扩压器出口温度<br>
+                    $ T_3' = T_5 = (\frac {p_2} {p_3}) ^ {\frac {n - 1} {n}} T_2' = $ <span>{{ T_3_ | round }}</span> $ K $
+                </li>
+                <li>由 $ p_2, T_3' $ 从 i-s 图可得扩压器出口实际比焓 $ i_3' = i_5 = $ <span>{{ i_3_ | round }}</span> $ J/kg $</li>
+                <li>扩压器进口气体密度<br>
+                    $ \rho_2' = \frac {p_3} {Z_2' R_g T_2'} = $ <span>{{ rho_2_ | round }}</span> $ kg/m^3 $
+                </li>
+                <li>扩压器出口比焓校核<br>
+                    $ i_5 = i_2 + q_B + q_K + q_l = $ <span>{{ i_5_verify | round }}</span> $ J/kg $
+                </li>
+                <li>扩压器进口直径<br>
+                    为了使从工作轮排出的气流平滑过渡到扩压器，一般使扩压器进口直径等于工作轮出口外径，即<br>
+                    $ D_K = D_2' = $ <span>{{ D_K | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>导流螺帽直径<br>
+                    为了使工作轮排出的气流不至于突然减速，一般都在工作轮端加装导流螺帽，其直径等于工作轮出口内经，即<br>
+                    $ d = D_2'' = $ <span>{{ d | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>扩压器出口直径<br>
+                    $ D_3 = \sqrt {\frac {4 q_m} {\pi c_3' \sin {\alpha_2} \rho_3'}} = $ <span>{{ D_3 | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>扩压器长度<br>
+                    $ L = \frac {D_3 - D_K} {2 \tan {\alpha_K}} = $ <span>{{ L | m_to_mm | round }}</span> $ mm $
+                </li>
+            </ol>
+            <h3>效率、制冷量、功率和转速</h3>
+            <ol>
+                <li>等熵效率<br>
+                    $ \eta_s = \frac {i_0 - i_5} {i_0 - i_{2s}} = $ <span>{{ eta_s | round }}</span>
+                </li>
+                <li>制冷量<br>
+                    $ Q_0 = \eta_s h_s q_m = $ <span>{{ Q_0 | round }}</span> $ W $
+                </li>
+                <li>轴功率<br>
+                    $ P_T = \eta_e h_s q_m = $ <span>{{ P_T | round }}</span> $ W $
+                </li>
+                <li>转速<br>
+                    $ n = \frac {60 u_1} {\pi D_1} = $ <span>{{ n_rotation | round }}</span> $ r/min $
+                    上述计算所得的速度三角形及 i-s 图见图 TODO 与图 TODO，计算结果列与表 TODO 中的第 TODO 栏数据中。可以看出，表中后三栏的数据基本上是一致的，但是由于采用了扩压器，透平膨胀机实际的等熵效率提高了。
+                </li>
+            </ol>
+            <h2>流道几何形状的确定</h2>
+            <h3>喷嘴叶片型线的选定及叶片的配置</h3>
+            <ol>
+                <li>选用 TC-2P 型径向叶型</li>
+                <li>选用相对跨距 $ l_N = 0.60 $，这时喷嘴叶片出口跨距<br>
+                    $ t_N = \frac {\pi D_N} {Z_N} = $ <span>{{ t_N | m_to_mm | round }}</span> $ mm $$ 弦长 $$ b = \frac {t_N} {l_N} = $ <span>{{ b | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>根据 TC-2P 叶型的试验数据，当 $ l_N = 0.60 $ 时，为了保证出口角 $ \alpha_1' = 16^\circ $，要求叶片安装角 $ \alpha_{1A} = 33^\circ $</li>
+                <li>喷嘴叶片外径<br>
+                    $ D_0 \approx 2 \sqrt {R_N^2 + (ab)^2 + 2 a b \sin {\alpha_{1A}} R_N} = $ <span>{{ D_0 | m_to_mm | round }}</span> $ mm $
+                </li>
+                <li>由所得的 $ b $ 值按所选叶型的相对坐标作出叶型图形，由所得叶型图及安装角 $ \alpha_{1A} $ 可以配置喷嘴叶片如图 TODO 所示。这时以叶尖出口点 A 为圆心，以计算所得的喷嘴喉部宽度 $ b_N $为半径，所做圆弧应与叶型图背弧线相切。否则应重新修正 $ l_N $ 值。</li>
+                考虑到从蜗壳到喷嘴叶片的过渡，取喷嘴环的直径 $ D_0' = mm $</li>
+            </ol>
+            <h3>工作轮形状的确定</h3>
+            <ol>
+                <li>已知 $ D_1 = $ <span>{{ D_1 | m_to_mm | round }}</span> $ mm, D_2' = $ <span>{{ D_2_ | m_to_mm | round }}</span> $ mm, D_2'' = $ <span>{{ D_2__ | m_to_mm | round }}</span> $ mm, l_1 = $ <span>{{ l_1 | m_to_mm | round }}</span> $ mm, \beta_1' = $ <span>{{ beta_1_ | rad_to_deg | round }}</span> $ ^\circ, \beta_2' = $ <span>{{ beta_2_ | rad_to_deg | round }}</span> $ ^\circ $</li>
+                <li>工作轮叶片数 $ Z_r = $ <span>{{ Z_r }}</span> 片</li>
+                <li>叶片进口处厚度 $ \delta_1 = 0.01 D_1 = $ <span>{{ delta_1 | m_to_mm | round }}</span> $ mm $</li>
+                <li>叶型部分轴向宽度 $ B_r = 0.3 D_1 = $ <span>{{ B_r | m_to_mm | round }}</span> $ mm $</li>
+                <li>导向段出口叶片平均跨度 $ t_{2m} = \frac {\pi (D_2' + D_2'')} {2 Z_r} = $ <span>{{ t_2m | m_to_mm | round }}</span> $ mm $</li>
+                <li>导向段轴向宽度 $ B_D = \frac {t_{2m}} {0.77} = $ <span>{{ B_D | m_to_mm | round }}</span> $ mm $</li>
+                <li>轮盘基线进口倾斜角 $ \theta_1 = $ <span>{{ theta_1 | rad_to_deg | round }}</span> $ ^\circ $；进口段直线长度先估取为 $ 0.15 D_1 = $ <span>{{ l_in | m_to_mm | round }}</span> $ mm $，要看子午面型线变化而调整。</li>
+                <li>出口轮毂段直线的倾斜角 $ \theta_2 = 0^\circ $；出口直线段长度取为 $ 0.5 B_D = $ <span>{{ l_out | m_to_mm | round }}</span> $ mm $，要根据 $ R_B $ 调整。</li>
+                <li>轮盘基线中部圆弧半径 $ R_B = 0.22 D_1 \approx $ <span>{{ R_B | m_to_mm | round }}</span> $ mm $</li>
+                <li>工作轮叶片顶线圆弧半径 $ R_G' = D_1 = $ <span>{{ R_G_ | m_to_mm | round }}</span> $ mm $；$ R_G'' = 0.11 D_1 \approx $ <span>{{ R_G__ | m_to_mm | round }}</span> $ mm $</li>
+                <li>按上述几何尺寸可作出工作轮轮盘子午面上的基线，此基线的回转面即为流场的基面。</li>
+                <li>然后根据 $ l_1, l_2 $ 及流道的光滑过渡要求，用作图法最后确定 $ R_G', R_G'' $ 参见图 TODO。</li>
+                <li> 以轴线为中心的等直径圆柱面上导流段的曲线可按二次抛物线方程 $ y = \frac {x^2} {2p} $ 确定，而<br>
+                    $ p = B_D \tan {\beta_2} = $ <span>{{ B_D | m_to_mm | round }}</span> $ \tan {\beta_2} $<br>
+                    $ \tan {\beta_2} = \frac {c_{2r}} {u_2 - c_{2u}} = \frac {c_2} {u_2} = $ <span>{{ c_2 | round }}</span> $ / u_2 $<br>
+                    按 $ c_2 $ 为不变值代入计算，可得到该抛物线的坐标如表 TODO。<br>
+                    图 TODO 给出了工作轮出口角 $ \beta_2 $ 与半径 $ R_2 $ 的关系。图 TODO 给出了每一个 $ R_2 $ 的圆柱面上导流段曲线的坐标 x, y 曲线。</li>
+            </ol>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="data.js"></script>
     <script src="index.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
     <script>
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          processEscapes: true
-        }
-      });
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true
+            }
+        });
     </script>
 </body>
 
