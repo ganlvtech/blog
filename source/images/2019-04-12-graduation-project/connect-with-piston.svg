@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="137.48991mm"
+   height="66.980675mm"
+   viewBox="0 0 137.48991 66.980675"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="connect-with-piston.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4729966"
+     inkscape:cx="309.72221"
+     inkscape:cy="141.00749"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-11.250476,-5.1095021)">
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#070000;stroke-width:0.99999994;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 202.41211,194.7779 v 77.1889 H 43.021484 V 85.072266 H 202.41211 l 0.4987,93.570884 64.00068,0.12837 -0.0155,-13.34393 h 18.23194 v 29.4142 l -18.37263,-0.007 z m 199.86573,0.17574 v 76.66154 H 561.66842 V 84.71875 H 402.2778 l 0.4987,94.27596 -81.83681,-0.0859 v -13.4872 h -18.23195 v 29.4142 l 18.23197,-1e-5 81.33813,0.11784"
+       id="rect815"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccc"
+       transform="scale(0.26458333)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.00293708px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="23.907955"
+       y="46.410236"
+       id="text839"><tspan
+         sodipodi:role="line"
+         id="tspan837"
+         x="23.907955"
+         y="46.410236"
+         style="stroke-width:0.26458332">130K</tspan><tspan
+         sodipodi:role="line"
+         x="23.907955"
+         y="50.163906"
+         style="stroke-width:0.26458332"
+         id="tspan841">0.48MPa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.0666101px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="118.66097"
+       y="51.631603"
+       id="text845"><tspan
+         sodipodi:role="line"
+         id="tspan843"
+         x="118.66097"
+         y="51.631603"
+         style="stroke-width:0.26458332">0.11MPa</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#070000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect828"
+       width="19.101543"
+       height="28.925194"
+       x="67.96521"
+       y="14.838938" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#070000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect832"
+       width="18.646744"
+       height="3.6383891"
+       x="68.147133"
+       y="30.756887" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#070000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect834"
+       width="3.36551"
+       height="21.193617"
+       x="75.878708"
+       y="9.5632725" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 71.239756,42.399739 3.54743,4e-5"
+       id="path836"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 72.990731,42.445219 -0.02273,2.72879"
+       id="path838"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 80.904227,44.858279 3.54743,-4e-5"
+       id="path836-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 82.655202,44.812799 -0.02273,-2.72879"
+       id="path838-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.52393913px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="56.087425"
+       y="56.401936"
+       id="text877"><tspan
+         sodipodi:role="line"
+         x="56.087425"
+         y="56.401936"
+         style="stroke-width:0.26458332"
+         id="tspan879">进排气门是与主轴相连的，与主轴角度有关，</tspan><tspan
+         sodipodi:role="line"
+         x="56.087425"
+         y="59.620426"
+         style="stroke-width:0.26458332"
+         id="tspan891">并不是受压差自由打开的</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.10030389px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335"
+       x="69.429161"
+       y="7.7117591"
+       id="text889"><tspan
+         sodipodi:role="line"
+         id="tspan887"
+         x="69.429161"
+         y="7.7117591"
+         style="stroke-width:0.26458335">输出轴功率</tspan></text>
+  </g>
+</svg>
